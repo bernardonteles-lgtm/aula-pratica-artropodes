@@ -185,7 +185,7 @@ svg .nodebox + text, svg g text{}
 .ccol ol li i{flex:0 0 18px;height:18px;border-radius:9px;background:var(--yellow);color:#22261c;font-style:normal;font-weight:700;font-size:11px;text-align:center;line-height:18px;margin-top:1px}
 .orgs{display:grid;gap:6px}
 .orgs.g2{grid-template-columns:1fr 1fr}
-.org{min-width:0;overflow-wrap:anywhere;background:var(--paper);border-radius:6px;padding:4px 4px 5px;color:var(--ink);text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+.org{min-width:0;hyphens:auto;-webkit-hyphens:auto;background:var(--paper);border-radius:6px;padding:4px 4px 5px;color:var(--ink);text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.3)}
 .org svg{width:100%;height:auto;aspect-ratio:200/120;display:block}
 .org span{font-size:12px;display:block;line-height:1.15}
 .org span b{font-family:var(--hand);font-size:15px;font-weight:700;display:block}
@@ -199,3 +199,6 @@ svg .nodebox + text, svg g text{}
 .hs.scroll{overflow:auto;align-items:flex-start}
 .hs.scroll .zoomable{height:auto;min-height:100%}
 .hs.scroll .fit{transform-origin:50% 0}
+
+.orgs.g2 .org span b{font-size:13px}
+.orgs.g2 .org span{font-size:11px}
