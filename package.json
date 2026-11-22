@@ -1,0 +1,9 @@
+{
+  "name": "aula-pratica-artropodes",
+  "version": "1.0.0",
+  "description": "Laboratório interativo do Filo Arthropoda: filogenia e modelos 3D dissecáveis (Limulus, aranha, lagostim, Daphnia, gafanhoto).",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build.mjs && cp dist/index.html index.html" },
+  "devDependencies": { "esbuild": "^0.28.2", "three": "^0.187.0" }
+}
