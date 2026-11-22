@@ -87,13 +87,51 @@ function applyHtml(slide, k) {
     else on = k >= +s;
     el.classList.toggle('hl-on', on);
   });
+  host.querySelectorAll('[data-now]').forEach((el) => {
+    const n = +el.dataset.now;
+    el.classList.toggle('now', k === n);
+    el.classList.toggle('past', k > n);
+  });
   let zoom = [50, 50, 1];
   for (const s of slide.steps.slice(0, k + 1)) if (s.zoom) zoom = s.zoom;
   if (z) z.style.transform = `scale(${zoom[2]}) translate(${50 - zoom[0]}%, ${50 - zoom[1]}%)`;
   if (slide.onStep) slide.onStep(k, host);
 }
 
+// ajusta o conteúdo HTML ao espaço disponível (qualquer tamanho de ecrã)
+function fitHtml() {
+  const host = $('#html');
+  const fit = host.querySelector('.fit');
+  if (!fit || fit.classList.contains('fill') || !host.classList.contains('on')) return;
+  fit.style.transform = 'none';
+  const pad = 24;
+  const aw = host.clientWidth - pad, ah = host.clientHeight - pad;
+  const w = fit.offsetWidth, h = fit.offsetHeight;
+  if (!w || !h) return;
+  let sc = Math.min(1.35, aw / w, ah / h);
+  const hs = host.querySelector('.hs');
+  // em ecrãs estreitos, em vez de encolher demasiado, deixa fazer scroll
+  const scroll = sc < 0.62 && aw < 720;
+  hs.classList.toggle('scroll', scroll);
+  if (scroll) sc = Math.min(1, aw / w);
+  fit.style.transform = `scale(${sc})`;
+  if (scroll) fit.style.marginBottom = `${-(1 - sc) * h}px`; else fit.style.marginBottom = '';
+}
+new ResizeObserver(() => fitHtml()).observe(document.querySelector('#html'));
+
+function hideTip() { const t = document.querySelector('#tip'); if (t) t.style.opacity = 0; }
+
+function renderLegendNums() {
+  const box = $('#numlist');
+  if (!stage.compact || !SLIDES[si].model) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  const list = stage.labelList();
+  box.style.display = list.length ? 'grid' : 'none';
+  box.innerHTML = list.map((l) => `<div data-id="${l.id}"><b>${l.n}</b> ${l.hidden ? '?' : l.name}</div>`).join('');
+}
+stage.onLabels = () => renderLegendNums();
+
 function show(newSi, newStep) {
+  hideTip();
   si = Math.max(0, Math.min(SLIDES.length - 1, newSi));
   const slide = SLIDES[si];
   step = Math.max(0, Math.min(slide.steps.length - 1, newStep));
@@ -113,10 +151,17 @@ function show(newSi, newStep) {
     $('.hint').style.display = 'none';
     const host = $('#html');
     host.classList.add('on');
-    if (fresh) host.innerHTML = `<div class="hs"><div class="zoomable">${typeof slide.html === 'function' ? slide.html() : slide.html}</div></div>`;
+    if (fresh) {
+      host.innerHTML = `<div class="hs"><div class="zoomable"><div class="fit">${typeof slide.html === 'function' ? slide.html() : slide.html}</div></div></div>`;
+      const fitEl = host.querySelector('.fit');
+      const first = fitEl.firstElementChild;
+      fitEl.classList.toggle('fill', !!first && (first.classList.contains('full') || first.style.height === '100%'));
+    }
     applyHtml(slide, step);
+    fitHtml();
   }
   lastSlide = si;
+  renderLegendNums();
   updateFooter();
   try { history.replaceState(null, '', `#d${si + 1}-${step + 1}`); } catch (e) {}
 }
@@ -173,23 +218,37 @@ document.addEventListener('keydown', (e) => {
   else if (e.key.toLowerCase() === 'i') toggleMenu();
   else if (e.key === 'Escape') $('#menu').style.display = 'none';
 });
-$('#next').onclick = next;
-$('#prev').onclick = prev;
-function toggleTest() { stage.setTest(!stage.testMode); $('#bTest').classList.toggle('on', stage.testMode); }
+$('#next').onclick = (e) => { e.currentTarget.blur(); next(); };
+$('#prev').onclick = (e) => { e.currentTarget.blur(); prev(); };
+document.addEventListener('click', (e) => {
+  const m = $('#menu');
+  if (m.style.display === 'block' && !e.target.closest('#menu') && !e.target.closest('#bMenu')) m.style.display = 'none';
+  if (!e.target.closest('.lbl')) hideTip();
+});
+document.addEventListener('pointerdown', (e) => { if (!e.target.closest('.lbl')) hideTip(); });
+$('#stage').addEventListener('mouseleave', hideTip);
+window.addEventListener('blur', hideTip);
+function toggleTest() { stage.setTest(!stage.testMode); $('#bTest').classList.toggle('on', stage.testMode); renderLegendNums(); }
 function toggleFs() { try { if (!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); } catch (e) {} }
 function toggleMenu() { const m = $('#menu'); m.style.display = m.style.display === 'block' ? 'none' : 'block'; }
-$('#bTest').onclick = toggleTest;
-$('#bFs').onclick = toggleFs;
-$('#bMenu').onclick = toggleMenu;
+$('#bTest').onclick = (e) => { e.currentTarget.blur(); toggleTest(); };
+$('#bFs').onclick = (e) => { e.currentTarget.blur(); toggleFs(); };
+$('#bMenu').onclick = (e) => { e.currentTarget.blur(); toggleMenu(); };
 
 // dica ao passar por cima de uma legenda
 const tip = $('#tip');
+let tipEl = null;
+// garante que a descrição nunca fica "presa": só se mantém enquanto o rato está sobre a legenda
+setInterval(() => {
+  if (tip.style.opacity === '1' && (!tipEl || !document.body.contains(tipEl) || !tipEl.matches(':hover') || tipEl.style.opacity === '0')) { tip.style.opacity = 0; tipEl = null; }
+}, 150);
 $('#labels').addEventListener('mouseover', (e) => {
   const el = e.target.closest('.lbl');
   if (!el || !stage.model) return;
   const a = stage.model.anchors[el.dataset.id];
   if (!a || !a.desc || (stage.testMode && !stage.revealed.has(a.id))) return;
   tip.innerHTML = `<b>${a.name}</b>${a.desc}`;
+  tipEl = el;
   const r = el.getBoundingClientRect(), sr = $('#stage').getBoundingClientRect();
   let x = r.left - sr.left, y = r.bottom - sr.top + 6;
   x = Math.min(x, sr.width - 310);
@@ -198,8 +257,9 @@ $('#labels').addEventListener('mouseover', (e) => {
   tip.style.top = y + 'px';
   tip.style.opacity = 1;
 });
-$('#labels').addEventListener('mouseout', (e) => { if (e.target.closest('.lbl')) tip.style.opacity = 0; });
+$('#labels').addEventListener('mouseout', (e) => { const l = e.target.closest('.lbl'); if (l && !l.contains(e.relatedTarget)) tip.style.opacity = 0; });
 stage.onLabelClick = (a) => {
+  renderLegendNums();
   if (stage.testMode && !stage.revealed.has(a.id)) { $('#info').style.display = 'none'; return; }
   const box = $('#info');
   box.innerHTML = `<b>${a.name}</b>${a.desc || ''}`;

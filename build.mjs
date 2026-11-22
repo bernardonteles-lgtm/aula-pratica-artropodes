@@ -41,6 +41,7 @@ const html = `<!DOCTYPE html>
       <div class="sub" id="sub"></div>
       <div class="notes" id="notes"></div>
       <div class="legend" id="legend"></div>
+      <div class="numlist" id="numlist"></div>
       <div class="info" id="info"></div>
     </aside>
   </main>

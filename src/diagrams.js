@@ -72,7 +72,7 @@ export function slantTree(root, { W = 1000, H = 560, top = 120, x0 = 90, x1 = 91
       if (n.art && ART[n.art]) out += `<g ${n.s != null ? `data-s="${n.s}"` : ''}><rect x="${n.x - 52}" y="${n.y - 42 - artH}" width="104" height="${artH}" rx="6" fill="#f4eedd"/><svg x="${n.x - 50}" y="${n.y - 40 - artH}" width="100" height="${artH - 4}" viewBox="0 0 200 120">${ART[n.art]().replace(/^<svg[^>]*>|<\/svg>$/g, '').replace(/<text[^>]*>.*?<\/text>/g, '')}</svg></g>`;
       out += `<text x="${n.x}" y="${n.y - 14}" text-anchor="middle" class="lbl2 hand ${n.hl != null ? 'hl' : ''}" ${n.hl != null ? `data-hl="${n.hl}"` : ''} ${n.s != null ? `data-s="${n.s}"` : ''} font-size="${(n.fs || 19) * 1.15}">${n.name}</text>`;
     }
-    if (n.c && n.name) out += `<text x="${n.x + 10}" y="${n.y + 18}" class="small" ${n.s != null ? `data-s="${n.s}"` : ''} font-style="italic">${n.name}</text>`;
+    if (n.c && n.name) out += `<text x="${n.x}" y="${n.y - 14}" text-anchor="middle" class="small" ${n.s != null ? `data-s="${n.s}"` : ''} font-style="italic" font-size="13">${n.name}</text>`;
   };
   draw(root);
   out += `<line class="chalk" stroke-width="5" stroke-opacity=".55" x1="${root.x}" y1="${root.y}" x2="${root.x - rootLen * 0.7}" y2="${root.y + rootLen}"/>`;

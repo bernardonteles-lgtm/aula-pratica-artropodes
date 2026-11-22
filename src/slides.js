@@ -204,6 +204,23 @@ const holoCycle = () => {
   return S(s, '0 0 1000 560');
 };
 
+
+// ---------------- quadro de classes (coluna por classe; números ligam características ao desenho) ----------------
+const orgSvg = (key, marks = []) => {
+  const inner = ART[key]().replace(/^<svg[^>]*>|<\/svg>$/g, '').replace(/<text[^>]*>.*?<\/text>/g, '');
+  const m = marks.map(([x, y], i) => `<g class="mark"><circle cx="${x}" cy="${y}" r="8"/><text x="${x}" y="${y + 4}">${i + 1}</text></g>`).join('');
+  return `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">${inner}${m}</svg>`;
+};
+// cols: [{name, sub, feats:[], orgs:[{art, label, sub, marks}], step}]
+const classBoard = (cols, strip) => `<div class="cwrap"><div class="cboard" style="--n:${cols.reduce((a, c) => a + (c.span || 1), 0)}">${cols.map((c) => `
+  <div class="ccol" data-now="${c.step}" style="${c.span ? `grid-column:span ${c.span}` : ''}">
+    <div class="ch2">${c.name}<small>${c.sub || ''}</small></div>
+    <div class="body" data-s="${c.step}">
+      <div class="orgs ${c.orgs.length > 1 ? 'g2' : ''}">${c.orgs.map((o) => `<div class="org">${orgSvg(o.art, o.marks || [])}<span><b>${o.label}</b>${o.sub || ''}</span></div>`).join('')}</div>
+      <ol>${c.feats.map((f, i) => `<li><i>${c.numbered === false ? '•' : i + 1}</i><span>${f}</span></li>`).join('')}</ol>
+    </div>
+  </div>`).join('')}</div>${strip ? `<div class="strip" data-s="${strip.step}">${strip.html}</div>` : ''}</div>`;
+
 // =====================================================================
 export const SLIDES = [
   // ---------------- INTRODUÇÃO ----------------
@@ -212,8 +229,8 @@ export const SLIDES = [
     html: () => `<div class="title-slide" style="width:100%;max-width:1000px">
       <h2>Filo Arthropoda</h2><p style="margin-top:6px">artrópodes = "patas articuladas" (gr. <i>arthron</i>, articulação + <i>pous</i>, pé)</p>
       <div class="cards c4" style="margin-top:26px">${card('limulus', 'Merostomata', 'Limulus', '', 0)}${card('spider', 'Arachnida', 'aranha', '', 0)}${card('crab', 'Crustacea', 'caranguejo', '', 0)}${card('insect', 'Insecta', 'inseto', '', 0)}</div>
-      <p class="boardnote" style="margin-top:26px">→ ou espaço para avançar · ← para recuar</p></div>`,
-    steps: [{ n: 'Nesta aula vamos <b>da filogenia aos organismos</b>: para cada grupo vemos um modelo por fora, por dentro, os apêndices e o ciclo de vida.' }, { n: 'Nos modelos 3D: <b>arraste</b> para rodar, <b>roda do rato</b> para aproximar, <b>passe por cima de um nome</b> para ver a descrição. O botão <b>Modo teste</b> esconde os nomes.' }],
+      <p class="boardnote" style="margin-top:26px">Criado por Bernardo Teles e Mariana Viegas</p></div>`,
+    steps: [{ n: 'Use <b>→</b> ou <b>espaço</b> para avançar e <b>←</b> para recuar. Nesta aula vamos <b>da filogenia aos organismos</b>: para cada grupo vemos um modelo por fora, por dentro, os apêndices e o ciclo de vida.' }, { n: 'Nos modelos: <b>arraste</b> para rodar, <b>roda do rato</b> para aproximar, <b>passe por cima de um nome</b> para ver a descrição. O botão <b>Modo teste</b> esconde os nomes.' }],
   },
   {
     sec: 'Introdução', title: 'Filogenia tradicional dos animais', sub: 'Baseada na morfologia e no desenvolvimento',
@@ -290,16 +307,22 @@ export const SLIDES = [
     ],
   },
   {
-    sec: 'Chelicerata', title: 'Diversidade dos quelicerados', sub: 'Os destacados têm modelo 3D',
-    html: () => `<div class="cards c3" style="max-width:1050px">
-      ${card('limulus', 'Merostomata', 'Limulus (límulo)', 'Marinhos, "fósseis vivos". Só 4 espécies atuais.', 0, 'feature')}
-      ${card('pycnogonid', 'Pycnogonida', 'aranhas-do-mar', 'Marinhos. Tronco tão fino que o intestino entra nas patas.', 1)}
-      ${card('spider', 'Arachnida: Araneae', 'aranhas', 'Seda e veneno. Prossoma e opistossoma unidos pelo pedicelo.', 2, 'feature')}
-      ${card('scorpion', 'Arachnida: Scorpiones', 'escorpiões', 'Pedipalpos em pinça; aguilhão venenoso no télson. Vivíparos.', 3)}
-      ${card('harvestman', 'Arachnida: Opiliones', 'opiliões', 'Prossoma e opistossoma fundidos; sem seda nem veneno.', 4)}
-      ${card('mite', 'Arachnida: Acari', 'ácaros e carraças', 'Corpo sem divisão visível. Muitos parasitas (carraças).', 5)}
-    </div>`,
-    steps: [{ n: 'Merostomata: o límulo, que vamos explorar em 3D.' }, { n: 'Pycnogonida: o sistema digestivo e as gónadas prolongam-se para as patas.' }, { n: 'Arachnida, ordem <b>Araneae</b>: também em 3D.' }, { n: 'Scorpiones: o abdómen divide-se em <b>mesossoma</b> e <b>metassoma</b> (a "cauda").' }, { n: 'Opiliones: parecem aranhas, mas o corpo é um só bloco.' }, { n: 'Acari: um dos grupos de aracnídeos com mais espécies; muitos são microscópicos.' }],
+    sec: 'Chelicerata', title: 'Diversidade dos quelicerados', sub: 'Três classes; os aracnídeos com várias ordens',
+    html: () => classBoard([
+      { name: 'Pycnogonida', sub: 'aranhas-do-mar', step: 1, orgs: [{ art: 'pycnogonid', label: 'Picnogónido', marks: [[52, 60], [66, 50], [130, 26]] }],
+        feats: ['Probóscide à frente da boca', 'Ovígeros (transportam os ovos)', 'Tronco tão fino que o intestino e as gónadas entram nas patas'] },
+      { name: 'Merostomata', sub: 'límulos (só 4 espécies atuais)', step: 2, orgs: [{ art: 'limulus', label: 'Limulus', marks: [[50, 66], [70, 38], [178, 60]] }],
+        feats: ['Prossoma coberto por carapaça em ferradura', 'Olhos compostos laterais', 'Télson longo; brânquias foliáceas por baixo'] },
+      { name: 'Arachnida', sub: 'aranhas, escorpiões, opiliões, ácaros…', step: 3, span: 2, numbered: false,
+        orgs: [{ art: 'spider', label: 'Araneae', sub: 'pedicelo; seda e veneno' }, { art: 'scorpion', label: 'Scorpiones', sub: 'pedipalpos em pinça; aguilhão' }, { art: 'harvestman', label: 'Opiliones', sub: 'corpo num só bloco' }, { art: 'mite', label: 'Acari', sub: 'muitos microscópicos; carraças' }],
+        feats: ['Quase todos terrestres', 'Respiram por pulmões foliáceos e/ou traqueias', 'Apêndices do abdómen reduzidos ou transformados (ex.: fieiras)'] },
+    ]),
+    steps: [
+      { n: 'O subfilo tem <b>três classes</b>. Vamos ver o que distingue cada uma — os números ligam cada característica ao desenho.' },
+      { n: '<b>Pycnogonida</b>: corpo reduzido a um tronco fino com patas compridas. Os <b>ovígeros</b> transportam os ovos (nos machos).' },
+      { n: '<b>Merostomata</b>: os límulos, marinhos. Vamos estudá-los a seguir.' },
+      { n: '<b>Arachnida</b>: a classe com mais espécies, dividida em ordens. Note como o corpo muda de ordem para ordem: dois tagmas unidos pelo pedicelo (aranhas), abdómen com "cauda" (escorpiões), corpo fundido (opiliões, ácaros).' },
+    ],
   },
   {
     sec: 'Chelicerata', title: '<em>Limulus</em> — morfologia externa', sub: 'Classe Merostomata · vista dorsal', model: 'limulus', view: 'hero',
@@ -374,24 +397,27 @@ export const SLIDES = [
     ],
   },
   {
-    sec: 'Crustacea', title: 'Classes de crustáceos', sub: 'Segundo o vosso manual',
-    html: () => `<div class="cards c5" style="max-width:1150px">
-      ${card('remipede', 'Remipedia', 'remípedes', 'Cavernas marinhas; tronco com muitos segmentos iguais.', 0)}
-      ${card('cephalocarid', 'Cephalocarida', 'cefalocarídeos', 'Minúsculos, em sedimentos marinhos. Considerados "primitivos".', 0)}
-      ${card('daphnia', 'Branchiopoda', 'Daphnia, Artemia, Triops', 'Patas foliáceas; sobretudo água doce.', 1, 'feature')}
-      ${card('copepod', 'Maxillopoda', 'copépodes', 'Abundantíssimos no plâncton.', 2)}
-      ${card('barnacle', 'Maxillopoda', 'cracas (Cirripedia)', 'Sésseis, filtram com as patas (cirros).', 2)}
-      ${card('argulus', 'Maxillopoda', 'Branchiura', 'Parasitas de peixes. Tantulocarida: parasitas microscópicos.', 2)}
-      ${card('ostracod', 'Ostracoda', 'ostracodes', 'Carapaça bivalve que fecha o corpo todo.', 2)}
-      ${card('isopod', 'Malacostraca', 'Isopoda', 'Bichos-de-conta: os crustáceos mais terrestres.', 3)}
-      ${card('amphipod', 'Malacostraca', 'Amphipoda', 'Pulgas-da-areia; comprimidos lateralmente.', 3)}
-      ${card('crab', 'Malacostraca', 'Decapoda', 'Lagostins, caranguejos, camarões: 5 pares de patas.', 3, 'feature')}
-    </div>`,
+    sec: 'Crustacea', title: 'Classes de crustáceos', sub: 'As cinco classes do vosso manual',
+    html: () => classBoard([
+      { name: 'Remipedia', sub: 'remípedes', step: 1, orgs: [{ art: 'remipede', label: 'Remípede', marks: [[110, 72], [118, 44], [24, 50]] }],
+        feats: ['Tronco longo com muitos segmentos iguais', 'Um par de patas natatórias por segmento', 'Cegos; vivem em grutas marinhas'] },
+      { name: 'Cephalocarida', sub: 'cefalocarídeos', step: 2, orgs: [{ art: 'cephalocarid', label: 'Cefalocarídeo', marks: [[42, 60], [84, 44], [186, 52]] }],
+        feats: ['Cabeça em forma de ferradura', 'Patas do tórax todas parecidas', 'Abdómen sem patas, com furca'] },
+      { name: 'Branchiopoda', sub: 'branquiópodes', step: 3, orgs: [{ art: 'triops', label: 'Triops', marks: [[70, 40], [110, 76]] }, { art: 'daphnia', label: 'Daphnia', marks: [[110, 66]] }],
+        feats: ['Carapaça: escudo (Triops) ou bivalve (Daphnia)', 'Patas foliáceas que filtram e trocam gases', 'Sobretudo água doce; ovos de resistência'] },
+      { name: 'Maxillopoda', sub: 'grupo muito diverso', step: 4, numbered: false, orgs: [{ art: 'copepod', label: 'Copepoda', sub: 'plâncton' }, { art: 'barnacle', label: 'Cirripedia', sub: 'cracas, sésseis' }, { art: 'argulus', label: 'Branchiura', sub: 'parasitas de peixes' }, { art: 'ostracod', label: 'Ostracoda', sub: 'carapaça bivalve' }],
+        feats: ['Corpo pequeno, abdómen reduzido', 'Olho naupliar no adulto', 'Também os Tantulocarida (parasitas minúsculos)'] },
+      { name: 'Malacostraca', sub: 'a maior classe', step: 5, numbered: false, orgs: [{ art: 'isopod', label: 'Isopoda', sub: 'bichos-de-conta' }, { art: 'amphipod', label: 'Amphipoda', sub: 'pulgas-da-areia' }, { art: 'krill', label: 'Euphausiacea', sub: 'krill' }, { art: 'crab', label: 'Decapoda', sub: 'lagostins, caranguejos' }],
+        feats: ['Tórax com 8 segmentos e abdómen com 6', 'Abdómen com pleópodes', 'Carapaça cobre o tórax em muitos grupos'] },
+    ], { step: 6, html: '<b>Hoje:</b> "Maxillopoda" não é um grupo natural, e os insetos estão <i>dentro</i> dos crustáceos — os remípedes e os branquiópodes estão entre os seus parentes mais próximos (Pancrustacea).' }),
     steps: [
-      { n: '<b>Remipedia</b> e <b>Cephalocarida</b>: grupos pequenos, mas importantes para a filogenia (os remípedes podem ser o grupo-irmão dos insetos).' },
-      { n: '<b>Branchiopoda</b>: vamos ver a <i>Daphnia</i> em 3D.' },
-      { n: '<b>Maxillopoda</b>: copépodes, cracas, Branchiura, Tantulocarida (e, no manual, os ostracodes). Hoje sabe-se que não formam um grupo natural.' },
-      { n: '<b>Malacostraca</b>: a maior classe — isópodes, anfípodes, krill (Euphausiacea) e decápodes. Vamos dissecar um <b>lagostim</b>.' },
+      { n: 'O manual divide os crustáceos em <b>cinco classes</b>. Vamos vê-las uma a uma; os números ligam cada característica ao desenho.' },
+      { n: '<b>Remipedia</b>: descobertos só em 1980, em grutas marinhas. Tronco sem divisão em tórax/abdómen.' },
+      { n: '<b>Cephalocarida</b>: minúsculos, em sedimentos marinhos; considerados muito "primitivos".' },
+      { n: '<b>Branchiopoda</b>: a <i>Daphnia</i>, que vamos observar, é um branquiópode.' },
+      { n: '<b>Maxillopoda</b>: reúne formas muito diferentes — copépodes, cracas, Branchiura e ostracodes.' },
+      { n: '<b>Malacostraca</b>: inclui o <b>lagostim</b>, que vamos dissecar.' },
+      { n: 'Atenção às diferenças entre o manual e a classificação atual.' },
     ],
   },
   {
@@ -479,14 +505,24 @@ export const SLIDES = [
     ],
   },
   {
-    sec: 'Uniramia / Myriapoda', title: 'Miriápodes', sub: 'Muitas patas, uma só regra para cada classe',
-    html: () => `<div class="cards c4" style="max-width:1100px">
-      ${card('centipede', 'Chilopoda', 'centopeias', 'Predadores. 1 par de patas por segmento; o 1.º par transformado em forcípulas.', 0)}
-      ${card('millipede', 'Diplopoda', 'milípedes, maria-café', 'Detritívoros. 2 pares de patas por diplossegmento; glândulas repugnatórias.', 1)}
-      ${card('pauropod', 'Pauropoda', 'paurópodes', 'Menos de 2 mm, no solo. Antenas ramificadas; 9 pares de patas.', 2)}
-      ${card('symphylan', 'Symphyla', 'sínfilos', 'No solo. 12 pares de patas; fieiras no fim do corpo.', 3)}
-    </div>`,
-    steps: [{ n: 'Reparem no <b>número de pares de patas por segmento</b>: é a forma mais rápida de distinguir uma centopeia de um milípede.' }, {}, {}, {}],
+    sec: 'Uniramia / Myriapoda', title: 'Miriápodes', sub: 'Conte as patas por segmento',
+    html: () => classBoard([
+      { name: 'Chilopoda', sub: 'centopeias', step: 1, orgs: [{ art: 'centipede', label: 'Centopeia', marks: [[94, 42], [40, 50], [8, 30]] }],
+        feats: ['1 par de patas por segmento', 'Forcípulas venenosas (1.º par do tronco)', 'Antenas longas; predadores'] },
+      { name: 'Diplopoda', sub: 'milípedes, maria-café', step: 2, orgs: [{ art: 'millipede', label: 'Milípede', marks: [[120, 46], [100, 60], [10, 46]] }],
+        feats: ['2 pares de patas por diplossegmento', 'Corpo cilíndrico; glândulas repugnatórias', 'Antenas curtas; detritívoros'] },
+      { name: 'Pauropoda', sub: 'paurópodes', step: 3, orgs: [{ art: 'pauropod', label: 'Paurópode', marks: [[22, 40], [104, 44], [130, 60]] }],
+        feats: ['Antenas ramificadas', '9 pares de patas', 'Menos de 2 mm, no solo'] },
+      { name: 'Symphyla', sub: 'sínfilos', step: 4, orgs: [{ art: 'symphylan', label: 'Sínfilo', marks: [[104, 44], [170, 50], [8, 36]] }],
+        feats: ['12 pares de patas', 'Fieiras no fim do corpo', 'Antenas longas; no solo'] },
+    ]),
+    steps: [
+      { n: 'Quatro classes de miriápodes. Para as distinguir, conte <b>quantos pares de patas há por segmento</b>.' },
+      { n: '<b>Chilopoda</b>: um par por segmento e <b>forcípulas</b> venenosas.' },
+      { n: '<b>Diplopoda</b>: dois pares por segmento — cada "segmento" resulta da fusão de dois (<b>diplossegmento</b>).' },
+      { n: '<b>Pauropoda</b>: minúsculos, com antenas ramificadas.' },
+      { n: '<b>Symphyla</b>: 12 pares de patas e fieiras.' },
+    ],
   },
 
   // ---------------- INSECTA ----------------
@@ -592,6 +628,6 @@ export const SLIDES = [
       <tr data-s="4"><td>Excreção</td><td>glândulas coxais, túbulos de Malpighi</td><td>glândulas antenais ou maxilares</td><td>túbulos de Malpighi</td><td>túbulos de Malpighi</td></tr>
       <tr data-s="5"><td>Desenvolvimento</td><td>direto (larva trilobítica no límulo)</td><td>larva náuplio (muitos)</td><td>direto (em muitos, juntam segmentos a cada muda)</td><td>ametábolo, hemi- ou holometábolo</td></tr>
     </table>`,
-    steps: [{ n: 'Uma linha de cada vez: tente prever antes de avançar.' }, {}, {}, {}, {}, { n: 'Para estudar: volte aos modelos 3D e ligue o <b>Modo teste</b> (tecla T): os nomes ficam escondidos até clicar.' }],
+    steps: [{ n: 'Uma linha de cada vez: tente prever antes de avançar.' }, {}, {}, {}, {}, { n: 'Para estudar: volte aos modelos e ligue o <b>Modo teste</b> (tecla T): os nomes ficam escondidos até clicar.' }],
   },
 ];

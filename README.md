@@ -1,5 +1,7 @@
 # Filo Arthropoda — laboratório interativo
 
+Criado por Bernardo Teles e Mariana Viegas.
+
 Aula prática em formato de apresentação: cada clique (→ ou espaço) faz aparecer o passo seguinte.
 Começa na filogenia e passa aos organismos. Cinco modelos 3D podem ser rodados, dissecados e legendados:
 

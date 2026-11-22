@@ -87,10 +87,14 @@ export class Stage3D {
     this.renderer.domElement.style.height = h + 'px';
     this.camera.aspect = w / h;
     // em ecrãs estreitos afastar a câmara um pouco
-    this.fitScale = w / h < 1.1 ? 1.35 : 1;
+    const asp = w / h;
+    this.fitScale = asp < 1.3 ? Math.min(2.6, 1.45 / asp) : 1;
     this.camera.updateProjectionMatrix();
     this.svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
     this.W = w; this.H = h;
+    const compact = w < 640;
+    if (compact !== this.compact) { this.compact = compact; if (this.labels) { this.updateTest(); this.onLabels && this.onLabels(); } }
+    if (this.labels) for (const [, L] of this.labels) L.h = 0;
   }
 
   register(name, builder) { this.builders = this.builders || {}; this.builders[name] = builder; }
@@ -162,10 +166,13 @@ export class Stage3D {
     const ids = new Set(this.expandLabels([...state.labels]));
     const fresh = new Set(this.expandLabels([...state.newLabels]));
     // remover legendas antigas
+    this.hover(this.hoverId, false);
     for (const [id, L] of this.labels) if (!ids.has(id)) { L.el.remove(); L.line.remove(); L.dot.remove(); this.labels.delete(id); }
     for (const id of ids) if (!this.labels.has(id)) this.addLabel(id, fresh.has(id));
     for (const id of fresh) { const L = this.labels.get(id); if (L) { L.el.classList.remove('fresh'); void L.el.offsetWidth; L.el.classList.add('fresh'); } }
     this.flyTo(state.view, instant ? 0 : 1.3);
+    this.updateTest();
+    this.onLabels && this.onLabels();
   }
 
   flyTo(view, dur) {
@@ -218,14 +225,18 @@ export class Stage3D {
     let n = 0;
     for (const [id, L] of this.labels) {
       n++;
+      L.n = n;
       const hide = this.testMode && !this.revealed.has(id);
-      L.el.querySelector('.t').textContent = hide ? `? ${n}` : L.a.name;
+      L.el.querySelector('.t').textContent = this.compact ? String(n) : hide ? `? ${n}` : L.a.name;
       L.el.classList.toggle('quiz', hide);
+      L.el.classList.toggle('num', !!this.compact);
       L.h = 0;
     }
   }
+  labelList() { return [...this.labels.values()].map((L) => ({ id: L.a.id, n: L.n, name: L.a.name, desc: L.a.desc, hidden: this.testMode && !this.revealed.has(L.a.id) })); }
 
   hover(id, on) {
+    if (id == null) { this.hoverId = null; this.hoverMeshes = []; return; }
     this.hoverId = on ? id : null;
     const L = this.labels.get(id);
     if (L) L.el.classList.toggle('hov', on);
@@ -328,6 +339,16 @@ export class Stage3D {
       if (a.when) vis *= a.when(this.cur) ? 1 : 0;
       if (!L.h) { L.h = L.el.offsetHeight || 22; L.w = L.el.offsetWidth || 100; }
       all.push({ L, sx, sy, vis });
+    }
+    if (this.compact) {
+      for (const it of all) {
+        const { L } = it;
+        L.el.style.transform = `translate(${it.sx - L.w / 2}px, ${it.sy - L.h / 2}px)`;
+        L.el.style.opacity = it.vis;
+        L.el.style.pointerEvents = it.vis > 0.5 ? 'auto' : 'none';
+        L.line.style.opacity = 0; L.dot.style.opacity = 0;
+      }
+      return;
     }
     const vis = all.filter((i) => i.vis > 0.3 && !i.L.a.inline);
     const mid = vis.length ? (Math.min(...vis.map((i) => i.sx)) + Math.max(...vis.map((i) => i.sx))) / 2 : cx;
