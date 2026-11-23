@@ -111,5 +111,758 @@
    "big": null
   }
  ],
- "protozoe__erro": "HTTP Error 429: Too many requests. Please contact the Wikimedia SRE team at noc@wikimedia.org and refer to this message. (daab851)"
+ "protozoe__erro": "HTTP Error 429: Too many requests. Please contact the Wikimedia SRE team at noc@wikimedia.org and refer to this message. (daab851)",
+ "nauplio": [
+  {
+   "title": "File:FMIB 46408 Larval Stages of the Prawn -- Penaeus.jpeg",
+   "license": "Public domain",
+   "artist": "William Thomas Calman",
+   "source": "https://commons.wikimedia.org/wiki/File:FMIB_46408_Larval_Stages_of_the_Prawn_--_Penaeus.jpeg",
+   "desc": "Larval Stages of the Prawn -- Penaeus sp.\nA, Nauplius; B, young zoea; C, older zoea; D, early 'schizopod' stage\n\nSubject: Shrimps, Penaeus\nTag: Shellfish",
+   "quality": false,
+   "w": 760,
+   "h": 746,
+   "big": null
+  },
+  {
+   "title": "File:EB1911 - Metamorphosis - Fig 3.png",
+   "license": "Public domain",
+   "artist": "Encyclopædia Britannica",
+   "source": "https://commons.wikimedia.org/wiki/File:EB1911_-_Metamorphosis_-_Fig_3.png",
+   "desc": "A and B after Fritz Müller in Archiv. für Naturgeschichte, vol. xxix., 1863; C, D, and E after C. Claus, Untersuch. zur Erfarschung Crurlaceen-Systems.\nFig. 3.—Drawings showing various stages in the larval history of Penaeus.\nA, Nauplius la",
+   "quality": false,
+   "w": 1048,
+   "h": 2064,
+   "big": null
+  },
+  {
+   "title": "File:Brockhaus and Efron Encyclopedic Dictionary b20 494-0.jpg",
+   "license": "Public domain",
+   "artist": "painter from Brockhaus and Efron Encyclopedic Dictionary",
+   "source": "https://commons.wikimedia.org/wiki/File:Brockhaus_and_Efron_Encyclopedic_Dictionary_b20_494-0.jpg",
+   "desc": "Illustration from Brockhaus and Efron Encyclopedic Dictionary (1890—1907)",
+   "quality": false,
+   "w": 3375,
+   "h": 2546,
+   "big": null
+  }
+ ],
+ "protozoe": [
+  {
+   "title": "File:Protozoea hilgendorfi.JPG",
+   "license": "CC BY-SA 3.0",
+   "artist": "Ghedoghedo",
+   "source": "https://commons.wikimedia.org/wiki/File:Protozoea_hilgendorfi.JPG",
+   "desc": "Fossil of Protozoea - Took the picture at Museo di Storia Naturale, Milano",
+   "quality": false,
+   "w": 1773,
+   "h": 533,
+   "big": null
+  },
+  {
+   "title": "File:Protozoea hilgendorfi Sahel Alma MNHN Sur les traces des dinosaures.jpg",
+   "license": "Public domain",
+   "artist": "Marie-Lan Taÿ Pamart",
+   "source": "https://commons.wikimedia.org/wiki/File:Protozoea_hilgendorfi_Sahel_Alma_MNHN_Sur_les_traces_des_dinosaures.jpg",
+   "desc": "",
+   "quality": false,
+   "w": 7526,
+   "h": 3763,
+   "big": null
+  }
+ ],
+ "misis": [
+  {
+   "title": "File:EB1911 - Metamorphosis - Fig 3.png",
+   "license": "Public domain",
+   "artist": "Encyclopædia Britannica",
+   "source": "https://commons.wikimedia.org/wiki/File:EB1911_-_Metamorphosis_-_Fig_3.png",
+   "desc": "A and B after Fritz Müller in Archiv. für Naturgeschichte, vol. xxix., 1863; C, D, and E after C. Claus, Untersuch. zur Erfarschung Crurlaceen-Systems.\nFig. 3.—Drawings showing various stages in the larval history of Penaeus.\nA, Nauplius la",
+   "quality": false,
+   "w": 1048,
+   "h": 2064,
+   "big": null
+  }
+ ],
+ "camarao": [
+  {
+   "title": "File:Penaeus semisulcatus (MNHN-IU-2011-5741).jpeg",
+   "license": "CC BY 4.0",
+   "artist": "Chan T. Y. & Lin C. W.",
+   "source": "https://commons.wikimedia.org/wiki/File:Penaeus_semisulcatus_(MNHN-IU-2011-5741).jpeg",
+   "desc": "PRESERVED_SPECIMEN; Penaeus semisulcatus de Haan, 1844; ; Individual Count:\t1\t; Event date:\t2010-04-30T00:00:00Z",
+   "quality": false,
+   "w": 4288,
+   "h": 2848,
+   "big": null
+  },
+  {
+   "title": "File:Penaeus kerathurus France.jpg",
+   "license": "CC BY 4.0",
+   "artist": "jujurenoult",
+   "source": "https://commons.wikimedia.org/wiki/File:Penaeus_kerathurus_France.jpg",
+   "desc": "Penaeus kerathurus, Rue du Prévost, 34250 Palavas-les-Flots, France",
+   "quality": false,
+   "w": 2048,
+   "h": 1536,
+   "big": null
+  },
+  {
+   "title": "File:Langostinos-rafax.JPG",
+   "license": "CC BY-SA 3.0",
+   "artist": "Rafael Ortega Díaz",
+   "source": "https://commons.wikimedia.org/wiki/File:Langostinos-rafax.JPG",
+   "desc": "Prawns",
+   "quality": false,
+   "w": 2272,
+   "h": 1704,
+   "big": null
+  },
+  {
+   "title": "File:Penaeus hathor (MNHN-IU-2014-19893).jpeg",
+   "license": "CC BY 4.0",
+   "artist": "Laura FLAMME",
+   "source": "https://commons.wikimedia.org/wiki/File:Penaeus_hathor_(MNHN-IU-2014-19893).jpeg",
+   "desc": "PRESERVED_SPECIMEN; Penaeus latisulcatus hathor Burkenroad, 1959\t; Type status:\tHOLOTYPE; Identified by:\tBurkenroad M.D.; Individual Count:\t1",
+   "quality": false,
+   "w": 4800,
+   "h": 3600,
+   "big": null
+  },
+  {
+   "title": "File:Penaeus kerathurus 144319882.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Julien Renoult",
+   "source": "https://commons.wikimedia.org/wiki/File:Penaeus_kerathurus_144319882.jpg",
+   "desc": "Caramote prawn (Penaeus kerathurus) in France",
+   "quality": false,
+   "w": 2048,
+   "h": 1365,
+   "big": null
+  },
+  {
+   "title": "File:FMIB 46462 Penaeus caramote from the Mediterranean.jpeg",
+   "license": "Public domain",
+   "artist": "William Thomas Calman",
+   "source": "https://commons.wikimedia.org/wiki/File:FMIB_46462_Penaeus_caramote_from_the_Mediterranean.jpeg",
+   "desc": "Penaeus caramote from the Mediterranean\nSubject: Penaeus\nTag: Shellfish",
+   "quality": false,
+   "w": 1023,
+   "h": 725,
+   "big": null
+  },
+  {
+   "title": "File:Penaeus (MNHN-IU-2014-22211).jpeg",
+   "license": "CC BY 4.0",
+   "artist": "Laura FLAMME",
+   "source": "https://commons.wikimedia.org/wiki/File:Penaeus_(MNHN-IU-2014-22211).jpeg",
+   "desc": "PRESERVED_SPECIMEN; Penaeus Fabricius, 1798\t; Type status:\tSYNTYPE; Identified by:\tBurkenroad M.D.; Individual Count:\t2",
+   "quality": false,
+   "w": 4800,
+   "h": 3600,
+   "big": null
+  },
+  {
+   "title": "File:Caramote (Penaus kerathurus) (Ifremer 00674-78585 - 31534).jpg",
+   "license": "CC BY 4.0",
+   "artist": "Damien Delaunay",
+   "source": "https://commons.wikimedia.org/wiki/File:Caramote_(Penaus_kerathurus)_(Ifremer_00674-78585_-_31534).jpg",
+   "desc": "Specimens captured during the NOURMED 2019 scientific campaign. The caramote is a large shrimp-type crustacean (18 cm for males and 22.5 cm for females). It is particularly recognizable thanks to the sky blue color of the end of its caudal ",
+   "quality": false,
+   "w": 5984,
+   "h": 3376,
+   "big": null
+  },
+  {
+   "title": "File:Melicertus canaliculatus (MNHN-IU-2011-5736).jpeg",
+   "license": "CC BY 4.0",
+   "artist": "Chan T. Y. & Lin C. W.",
+   "source": "https://commons.wikimedia.org/wiki/File:Melicertus_canaliculatus_(MNHN-IU-2011-5736).jpeg",
+   "desc": "PRESERVED_SPECIMEN; Melicertus canaliculatus (Olivier, 1811); ; Individual Count:\t1\t; Event date:\t2010-04-30T00:00:00Z",
+   "quality": false,
+   "w": 4288,
+   "h": 2848,
+   "big": null
+  },
+  {
+   "title": "File:Caramote (Penaus kerathurus) (Ifremer 00674-78585 - 31535).jpg",
+   "license": "CC BY 4.0",
+   "artist": "Damien Delaunay",
+   "source": "https://commons.wikimedia.org/wiki/File:Caramote_(Penaus_kerathurus)_(Ifremer_00674-78585_-_31535).jpg",
+   "desc": "Specimens captured during the NOURMED 2019 scientific campaign. The caramote is a large shrimp-type crustacean (18 cm for males and 22.5 cm for females). It is particularly recognizable thanks to the sky blue color of the end of its caudal ",
+   "quality": false,
+   "w": 5984,
+   "h": 3376,
+   "big": null
+  },
+  {
+   "title": "File:Melicertus canaliculatus (MNHN-IU-2011-5738).jpeg",
+   "license": "CC BY 4.0",
+   "artist": "Chan T. Y. & Lin C. W.",
+   "source": "https://commons.wikimedia.org/wiki/File:Melicertus_canaliculatus_(MNHN-IU-2011-5738).jpeg",
+   "desc": "PRESERVED_SPECIMEN; Melicertus canaliculatus (Olivier, 1811); ; Individual Count:\t1\t; Event date:\t2010-04-30T00:00:00Z",
+   "quality": false,
+   "w": 4288,
+   "h": 2848,
+   "big": null
+  },
+  {
+   "title": "File:Caramote (Penaus kerathurus) (Ifremer 00674-78585 - 31533).jpg",
+   "license": "CC BY 4.0",
+   "artist": "Damien Delaunay",
+   "source": "https://commons.wikimedia.org/wiki/File:Caramote_(Penaus_kerathurus)_(Ifremer_00674-78585_-_31533).jpg",
+   "desc": "Specimens captured during the NOURMED 2019 scientific campaign. The caramote is a large shrimp-type crustacean (18 cm for males and 22.5 cm for females). It is particularly recognizable thanks to the sky blue color of the end of its caudal ",
+   "quality": false,
+   "w": 5984,
+   "h": 3376,
+   "big": null
+  },
+  {
+   "title": "File:Llagostí amb all al vapor.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Francesc Fort",
+   "source": "https://commons.wikimedia.org/wiki/File:Llagost%C3%AD_amb_all_al_vapor.jpg",
+   "desc": "Mindou",
+   "quality": false,
+   "w": 720,
+   "h": 960,
+   "big": null
+  },
+  {
+   "title": "File:Fenneropenaeus indicus (MNHN-IU-2011-5728).jpeg",
+   "license": "CC BY 4.0",
+   "artist": "Chan T. Y. & Lin C. W.",
+   "source": "https://commons.wikimedia.org/wiki/File:Fenneropenaeus_indicus_(MNHN-IU-2011-5728).jpeg",
+   "desc": "PRESERVED_SPECIMEN; Fenneropenaeus indicus (H.Milne Edwards, 1837); ; Individual Count:\t1\t; Event date:\t2010-04-30T00:00:00Z",
+   "quality": false,
+   "w": 4288,
+   "h": 2848,
+   "big": null
+  },
+  {
+   "title": "File:Spaghetti alla Nostromo.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Giacomo Antonio Lombardi",
+   "source": "https://commons.wikimedia.org/wiki/File:Spaghetti_alla_Nostromo.jpg",
+   "desc": "Spaghetti tradizionali di Gaeta, con pomodoro, cozze, vongole e mazzancolle",
+   "quality": false,
+   "w": 3120,
+   "h": 4160,
+   "big": null
+  }
+ ],
+ "monarca_ovo": [
+  {
+   "title": "File:Oruga de mariposa momarca comiendo su plata hospedera algodoncillo.jpg",
+   "license": "CC0",
+   "artist": "Diaz de vivar gustavo",
+   "source": "https://commons.wikimedia.org/wiki/File:Oruga_de_mariposa_momarca_comiendo_su_plata_hospedera_algodoncillo.jpg",
+   "desc": "The decline in monarch butterfly populations is due to several factors, primarily habitat loss due to deforestation and climate change. Monarch butterflies rely on certain plant species, especially Asclepia (or milkweed), to lay their eggs ",
+   "quality": false,
+   "w": 2252,
+   "h": 3586,
+   "big": null
+  }
+ ],
+ "monarca_larva": [
+  {
+   "title": "File:Danaus plexippus 3rd Instar.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "MjolnirPants",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_3rd_Instar.jpg",
+   "desc": "A monarch butterfly caterpillar (Danaus plexippus) in it's 2nd week of life, feeding on tropical milkweed (Asclepias curassavica).",
+   "quality": false,
+   "w": 1733,
+   "h": 975,
+   "big": null
+  },
+  {
+   "title": "File:Larva of African Queen - Danaus chrysippus 01.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Zeynel Cebeci",
+   "source": "https://commons.wikimedia.org/wiki/File:Larva_of_African_Queen_-_Danaus_chrysippus_01.jpg",
+   "desc": "A 4th instar larva of African Queen (Danaus chrysippus) feeding Cynanchum acutum, one of the host plants of African monarchs in eastern Mediterranean region. Osmaniye - Turkey.",
+   "quality": false,
+   "w": 2250,
+   "h": 1546,
+   "big": null
+  },
+  {
+   "title": "File:Monarch (Danaus plexippus), Larva (37525894080).jpg",
+   "license": "CC BY-SA 2.0",
+   "artist": "Ryan Hodnett from Kitchener, Canada",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_(Danaus_plexippus),_Larva_(37525894080).jpg",
+   "desc": "Location: MacGregor Point Provincial Park, Ontario, Canada.",
+   "quality": false,
+   "w": 4491,
+   "h": 1497,
+   "big": null
+  },
+  {
+   "title": "File:First Instar Monarch Caterpillar (18016255933).jpg",
+   "license": "Public domain",
+   "artist": "USFWSmidwest",
+   "source": "https://commons.wikimedia.org/wiki/File:First_Instar_Monarch_Caterpillar_(18016255933).jpg",
+   "desc": "Photo by Courtney Celley/USFWS.",
+   "quality": false,
+   "w": 2499,
+   "h": 1666,
+   "big": null
+  },
+  {
+   "title": "File:Monarch (Danaus plexippus), Larva (37734052396).jpg",
+   "license": "CC BY-SA 2.0",
+   "artist": "Ryan Hodnett from Kitchener, Canada",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_(Danaus_plexippus),_Larva_(37734052396).jpg",
+   "desc": "Location: MacGregor Point Provincial Park, Ontario, Canada.",
+   "quality": false,
+   "w": 5853,
+   "h": 1950,
+   "big": null
+  },
+  {
+   "title": "File:First Instar Monarch Caterpillar (18016258293).jpg",
+   "license": "Public domain",
+   "artist": "USFWSmidwest",
+   "source": "https://commons.wikimedia.org/wiki/File:First_Instar_Monarch_Caterpillar_(18016258293).jpg",
+   "desc": "Photo by Courtney Celley/USFWS.",
+   "quality": false,
+   "w": 5184,
+   "h": 3456,
+   "big": null
+  },
+  {
+   "title": "File:First Instar Monarch Caterpillar (29066534075).jpg",
+   "license": "Public domain",
+   "artist": "USFWSmidwest",
+   "source": "https://commons.wikimedia.org/wiki/File:First_Instar_Monarch_Caterpillar_(29066534075).jpg",
+   "desc": "Monarch caterpillars go through five instars before moving to the chrysalis phase.\n\nVideo by USFWS.",
+   "quality": false,
+   "w": 1920,
+   "h": 1080,
+   "big": null
+  },
+  {
+   "title": "File:Monarch (Danaus plexippus) Larva - MacGregor Point Provincial Park.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Ryan Hodnett",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_(Danaus_plexippus)_Larva_-_MacGregor_Point_Provincial_Park.jpg",
+   "desc": "Monarch (Danaus plexippus) larva in MacGregor Point Provincial Park, Ontario, Canada.",
+   "quality": false,
+   "w": 2181,
+   "h": 1227,
+   "big": null
+  },
+  {
+   "title": "File:Early instar monarch larvae 1.JPG",
+   "license": "CC BY-SA 3.0",
+   "artist": "Forehand.jay",
+   "source": "https://commons.wikimedia.org/wiki/File:Early_instar_monarch_larvae_1.JPG",
+   "desc": "An early instar monarch larvae.",
+   "quality": false,
+   "w": 3072,
+   "h": 2304,
+   "big": null
+  },
+  {
+   "title": "File:Starr-110531-5935-Asclepias physocarpa-plant with monarch butterfly Danaus plexippus larva-Kula-Maui (24800690000).jpg",
+   "license": "CC BY 3.0 us",
+   "artist": "Forest and Kim Starr",
+   "source": "https://commons.wikimedia.org/wiki/File:Starr-110531-5935-Asclepias_physocarpa-plant_with_monarch_butterfly_Danaus_plexippus_larva-Kula-Maui_(24800690000).jpg",
+   "desc": "Asclepias physocarpa (Balloon plant)\nPlant with monarch butterfly Danaus plexippus larva at Kula, Maui, Hawaii.\nMay 31, 2011\n\n\n#110531-5935\n\n\nImage Use Policy\nAlso known as Gomphocarpus physocarpus.  Also placed in Asclepiadaceae.",
+   "quality": false,
+   "w": 3648,
+   "h": 2736,
+   "big": null
+  },
+  {
+   "title": "File:20200920-NRCS-RAM-001 Monarch 5th instar larva on Ascl tuberosa 657 (51001170966).jpg",
+   "license": "Public domain",
+   "artist": "U.S. Department of Agriculture",
+   "source": "https://commons.wikimedia.org/wiki/File:20200920-NRCS-RAM-001_Monarch_5th_instar_larva_on_Ascl_tuberosa_657_(51001170966).jpg",
+   "desc": "Monarch 5th instar larva feeding on butterfly milkweed (Asclepias tuberosa) in Payne County, Oklahoma.\n\n(USDA/NRCS photo by Ray A. Moranz)",
+   "quality": false,
+   "w": 3872,
+   "h": 2592,
+   "big": null
+  },
+  {
+   "title": "File:Second instar monarch.png",
+   "license": "CC BY-SA 4.0",
+   "artist": "WriterArtistCoder",
+   "source": "https://commons.wikimedia.org/wiki/File:Second_instar_monarch.png",
+   "desc": "A second instar caterpillar",
+   "quality": false,
+   "w": 802,
+   "h": 530,
+   "big": null
+  },
+  {
+   "title": "File:Starr-101228-6040-Calotropis gigantea-leaf with Monarch butterfly Danaus plexippus larva-Honokanaia-Kahoolawe (24941262842).jpg",
+   "license": "CC BY 3.0 us",
+   "artist": "Forest and Kim Starr",
+   "source": "https://commons.wikimedia.org/wiki/File:Starr-101228-6040-Calotropis_gigantea-leaf_with_Monarch_butterfly_Danaus_plexippus_larva-Honokanaia-Kahoolawe_(24941262842).jpg",
+   "desc": "Calotropis gigantea (Crown flower)\nLeaf with Monarch butterfly Danaus plexippus larva at Honokanaia, Kahoolawe, Hawaii.\nDecember 28, 2010\n\n\n#101228-6040\n\n\nImage Use Policy",
+   "quality": false,
+   "w": 3456,
+   "h": 2592,
+   "big": null
+  },
+  {
+   "title": "File:Starr-110531-5934-Asclepias physocarpa-plant with monarch butterfly Danaus plexippus larva-Kula-Maui (24978118842).jpg",
+   "license": "CC BY 3.0 us",
+   "artist": "Forest and Kim Starr",
+   "source": "https://commons.wikimedia.org/wiki/File:Starr-110531-5934-Asclepias_physocarpa-plant_with_monarch_butterfly_Danaus_plexippus_larva-Kula-Maui_(24978118842).jpg",
+   "desc": "Asclepias physocarpa (Balloon plant)\nPlant with monarch butterfly Danaus plexippus larva at Kula, Maui, Hawaii.\nMay 31, 2011\n\n\n#110531-5934\n\n\nImage Use Policy\nAlso known as Gomphocarpus physocarpus.  Also placed in Asclepiadaceae.",
+   "quality": false,
+   "w": 3648,
+   "h": 2736,
+   "big": null
+  },
+  {
+   "title": "File:Starr-110531-5933-Asclepias physocarpa-plant with monarch butterfly Danaus plexippus larva-Kula-Maui (24465594704).jpg",
+   "license": "CC BY 3.0 us",
+   "artist": "Forest and Kim Starr",
+   "source": "https://commons.wikimedia.org/wiki/File:Starr-110531-5933-Asclepias_physocarpa-plant_with_monarch_butterfly_Danaus_plexippus_larva-Kula-Maui_(24465594704).jpg",
+   "desc": "Asclepias physocarpa (Balloon plant)\nPlant with monarch butterfly Danaus plexippus larva at Kula, Maui, Hawaii.\nMay 31, 2011\n\n\n#110531-5933\n\n\nImage Use Policy\nAlso known as Gomphocarpus physocarpus.  Also placed in Asclepiadaceae.",
+   "quality": false,
+   "w": 2736,
+   "h": 3648,
+   "big": null
+  }
+ ],
+ "monarca_pupa": [
+  {
+   "title": "File:Monarch butterfly with its pupa case.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Avenue",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_butterfly_with_its_pupa_case.jpg",
+   "desc": "A monarch butterfly (Danaus plexippus) holds onto its pupa case.",
+   "quality": false,
+   "w": 3456,
+   "h": 5184,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus 156951137.jpg",
+   "license": "CC0",
+   "artist": "Lila",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_156951137.jpg",
+   "desc": "Monarch (Danaus plexippus)",
+   "quality": false,
+   "w": 1536,
+   "h": 2048,
+   "big": null
+  },
+  {
+   "title": "File:Monarch life-cycle.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Chiswick Chap",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_life-cycle.jpg",
+   "desc": "Life-cycle of monarch butterfly, from egg through caterpillar larvae to pupa and adult",
+   "quality": false,
+   "w": 7497,
+   "h": 2588,
+   "big": null
+  },
+  {
+   "title": "File:Monarch Butterfly Chrysalis (45553422001).jpg",
+   "license": "Public domain",
+   "artist": "ShenandoahNPS",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Chrysalis_(45553422001).jpg",
+   "desc": "NPS | N. Lewis Monarch Chrysalis",
+   "quality": false,
+   "w": 5792,
+   "h": 8688,
+   "big": null
+  },
+  {
+   "title": "File:Monarch chrysalis on common milkweed (day 3) (50199295982).jpg",
+   "license": "Public domain",
+   "artist": "U.S. Fish and Wildlife Service - Midwest Region",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_chrysalis_on_common_milkweed_(day_3)_(50199295982).jpg",
+   "desc": "Third day as a chrysalis. The chrysalis retains water drops from a period of heavy rainfall this morning.\nNote: This transformation occurred in the wild. If you'd like to help monarchs, we recommend creating pollinator habitat by planting m",
+   "quality": false,
+   "w": 1536,
+   "h": 2300,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus 149zz.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Photo by David J. Stang",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_149zz.jpg",
+   "desc": "Location taken: Mariposas de Mindo, Ecuador. Names: Danaus (Anosia) plexippus Linnaeus, 1758, Borboleta monarca, Bướm Monarch, Bướm vua, Fluture Monarh, Glöyn y llaethlys, Kral kelebeği, Kupu kupu Monarch, Kupu kupu Raja, Kupu-Kupu Raja, le",
+   "quality": false,
+   "w": 1000,
+   "h": 832,
+   "big": null
+  },
+  {
+   "title": "File:Empty monarch chrysalis (50240830341).jpg",
+   "license": "Public domain",
+   "artist": "U.S. Fish and Wildlife Service - Midwest Region",
+   "source": "https://commons.wikimedia.org/wiki/File:Empty_monarch_chrysalis_(50240830341).jpg",
+   "desc": "An empty monarch chrysalis after the butterfly emerged and departed.\nPhoto by Courtney Celley/USFWS.",
+   "quality": false,
+   "w": 3200,
+   "h": 4793,
+   "big": null
+  },
+  {
+   "title": "File:Monarch Chrysalis on Butterfly Weed (51261518416).jpg",
+   "license": "Public domain",
+   "artist": "U.S. Fish and Wildlife Service - Midwest Region",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_Chrysalis_on_Butterfly_Weed_(51261518416).jpg",
+   "desc": "Monarch chrysalis on butterfly weed.\nPhoto by Tina Shaw/USFWS.",
+   "quality": false,
+   "w": 3264,
+   "h": 4928,
+   "big": null
+  },
+  {
+   "title": "File:Eclosing Danaus plexippus, monarch butterfly, life cycle Megan McCarty118.JPG",
+   "license": "CC0",
+   "artist": "Bfpage",
+   "source": "https://commons.wikimedia.org/wiki/File:Eclosing_Danaus_plexippus,_monarch_butterfly,_life_cycle_Megan_McCarty118.JPG",
+   "desc": "an edited version of file Eclosing Monarch, Megan McCarty118",
+   "quality": false,
+   "w": 616,
+   "h": 488,
+   "big": null
+  },
+  {
+   "title": "File:Monarch chrysalis on common milkweed (day 4) (50210090456).jpg",
+   "license": "Public domain",
+   "artist": "U.S. Fish and Wildlife Service - Midwest Region",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_chrysalis_on_common_milkweed_(day_4)_(50210090456).jpg",
+   "desc": "Fourth day as a chrysalis.\nNote: This transformation occurred in the wild. If you'd like to help monarchs, we recommend creating pollinator habitat by planting milkweed and other nectar sources native to your area.\n\nPhoto by Courtney Celley",
+   "quality": false,
+   "w": 1900,
+   "h": 2846,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus emerging from chrysalis 04.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Captain-tucker",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_emerging_from_chrysalis_04.jpg",
+   "desc": "A Danaus plexippus en    commonly know as a Monarch Butterfly emerging from its chrysalis.",
+   "quality": false,
+   "w": 907,
+   "h": 1422,
+   "big": null
+  },
+  {
+   "title": "File:Monarch chrysalis on common milkweed (day 6) (50210089141).jpg",
+   "license": "Public domain",
+   "artist": "U.S. Fish and Wildlife Service - Midwest Region",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_chrysalis_on_common_milkweed_(day_6)_(50210089141).jpg",
+   "desc": "Sixth day as a chrysalis.\nNote: This transformation occurred in the wild. If you'd like to help monarchs, we recommend creating pollinator habitat by planting milkweed and other nectar sources native to your area.\n\nPhoto by Courtney Celley/",
+   "quality": false,
+   "w": 2800,
+   "h": 4195,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus emerging from chrysalis 03.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Captain-tucker",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_emerging_from_chrysalis_03.jpg",
+   "desc": "A Danaus plexippus en    commonly know as a Monarch Butterfly emerging from its chrysalis.",
+   "quality": false,
+   "w": 760,
+   "h": 1185,
+   "big": null
+  },
+  {
+   "title": "File:Monarch chrysalis on common milkweed (day 9) (50221129593).jpg",
+   "license": "Public domain",
+   "artist": "U.S. Fish and Wildlife Service - Midwest Region",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_chrysalis_on_common_milkweed_(day_9)_(50221129593).jpg",
+   "desc": "Ninth day as a chrysalis.\nNote: This transformation occurred in the wild. If you'd like to help monarchs, we recommend creating pollinator habitat by planting milkweed and other nectar sources native to your area.\n\nPhoto by Courtney Celley/",
+   "quality": false,
+   "w": 2500,
+   "h": 3745,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus emerging from chrysalis 02.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Captain-tucker",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_emerging_from_chrysalis_02.jpg",
+   "desc": "A Danaus plexippus en    commonly know as a Monarch Butterfly emerging from its chrysalis.",
+   "quality": false,
+   "w": 775,
+   "h": 1269,
+   "big": null
+  }
+ ],
+ "monarca_adulto": [
+  {
+   "title": "File:Danaus plexippus MHNT.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Didier Descouens",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_MHNT.jpg",
+   "desc": "♂ - Two views of same specimen\nLocality: Lac Valmont, Quebec, Canada.",
+   "quality": false,
+   "w": 5612,
+   "h": 7104,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus MHNT femelle.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Didier Descouens",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_MHNT_femelle.jpg",
+   "desc": "Monarch butterfly.  Two views of same specimen",
+   "quality": false,
+   "w": 6933,
+   "h": 8598,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus MHNT ventre.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Didier Descouens",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_MHNT_ventre.jpg",
+   "desc": "♂ - △ Ventral side\nLocality:  Lac Valmont, Quebec, Canada..",
+   "quality": false,
+   "w": 5612,
+   "h": 4088,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus MHNT dos.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Didier Descouens",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_MHNT_dos.jpg",
+   "desc": "♂ - Dorsal side\nLocality: Lac Valmont, Quebec, Canada.",
+   "quality": false,
+   "w": 5874,
+   "h": 4088,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus MHNT femelle dos.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Didier Descouens",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_MHNT_femelle_dos.jpg",
+   "desc": "Monarch butterfly. Dorsal side",
+   "quality": false,
+   "w": 6933,
+   "h": 4893,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus MHNT femelle ventre.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Didier Descouens",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_MHNT_femelle_ventre.jpg",
+   "desc": "Monarch butterfly.  △ Ventral side",
+   "quality": false,
+   "w": 6933,
+   "h": 4606,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus (7).jpg",
+   "license": "CC BY 2.0",
+   "artist": "Thomas Bresson",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_(7).jpg",
+   "desc": "Monarch butterfly",
+   "quality": true,
+   "w": 3936,
+   "h": 2326,
+   "big": null
+  },
+  {
+   "title": "File:ComputerHotline - Danaus plexippus (by) (3).jpg",
+   "license": "CC BY 2.0",
+   "artist": "Thomas Bresson",
+   "source": "https://commons.wikimedia.org/wiki/File:ComputerHotline_-_Danaus_plexippus_(by)_(3).jpg",
+   "desc": "A Monarch.",
+   "quality": true,
+   "w": 2461,
+   "h": 2634,
+   "big": null
+  },
+  {
+   "title": "File:Monarch caterpillar (23229).jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Rhododendrites",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_caterpillar_(23229).jpg",
+   "desc": "Monarch butterfly caterpillar in Green-Wood Cemetery",
+   "quality": true,
+   "w": 4515,
+   "h": 3354,
+   "big": null
+  },
+  {
+   "title": "File:Monarch butterfly in BBG (84685).jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Rhododendrites",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_butterfly_in_BBG_(84685).jpg",
+   "desc": "Monarch butterfly (Danaus plexippus) in Brooklyn Botanic Garden",
+   "quality": true,
+   "w": 4068,
+   "h": 2746,
+   "big": null
+  },
+  {
+   "title": "File:Monarch butterflies (Danaus plexippus plexippus) Piedra Herrada 2.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Charles J. Sharp",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_butterflies_(Danaus_plexippus_plexippus)_Piedra_Herrada_2.jpg",
+   "desc": "Monarch butterflies (Danaus plexippus plexippus), Piedra Herrada, Valle de Bravo, Mexico",
+   "quality": true,
+   "w": 3885,
+   "h": 2590,
+   "big": null
+  },
+  {
+   "title": "File:Monarch butterfly (70387).jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Rhododendrites",
+   "source": "https://commons.wikimedia.org/wiki/File:Monarch_butterfly_(70387).jpg",
+   "desc": "Monarch butterfly (Danaus plexippus) on Salvia uliginosa in Brooklyn Botanic Garden.",
+   "quality": true,
+   "w": 3017,
+   "h": 2296,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus 76zz.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Photo by David J. Stang",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_76zz.jpg",
+   "desc": "Location taken: Butterfly World, Coconut Creek, FL USA. Names: Danaus (Anosia) plexippus Linnaeus, 1758, Borboleta monarca, Bướm Monarch, Bướm vua, Fluture Monarh, Glöyn y llaethlys, Kral kelebeği, Kupu kupu Monarch, Kupu kupu Raja, Kupu-Ku",
+   "quality": false,
+   "w": 1000,
+   "h": 1008,
+   "big": null
+  },
+  {
+   "title": "File:Danaus plexippus 75zz.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Photo by David J. Stang",
+   "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_75zz.jpg",
+   "desc": "Location taken: Butterfly World, Coconut Creek, FL USA. Names: Danaus (Anosia) plexippus Linnaeus, 1758, Borboleta monarca, Bướm Monarch, Bướm vua, Fluture Monarh, Glöyn y llaethlys, Kral kelebeği, Kupu kupu Monarch, Kupu kupu Raja, Kupu-Ku",
+   "quality": false,
+   "w": 1000,
+   "h": 1001,
+   "big": null
+  },
+  {
+   "title": "File:NW108-21 Danaus plexippus (3429387161).jpg",
+   "license": "CC0",
+   "artist": "NSG group from Lund, Sweden",
+   "source": "https://commons.wikimedia.org/wiki/File:NW108-21_Danaus_plexippus_(3429387161).jpg",
+   "desc": "PORTUGAL.  Madeira,  PRS 2005, MPE 2006, Biol.Lett.2008, Sys Bio 2008, PRS 2009, PRS 2012,  Phylogenomics, Exemplar, PBStest, Lepidoptera,  <a href=\"http://nymphalidae.utu.fi/story.php?code=NW108-21\" rel=\"nofollow\">see in our database</a>",
+   "quality": false,
+   "w": 2272,
+   "h": 3408,
+   "big": null
+  }
+ ]
 }
