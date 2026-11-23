@@ -229,7 +229,7 @@ const ALL = [
     sec: 'Introdução', title: 'Filo <em>Arthropoda</em>', sub: 'Aula prática interativa',
     html: () => `<div class="title-slide" style="width:100%;max-width:1000px">
       <h2>Filo Arthropoda</h2><p style="margin-top:6px">artrópodes = "patas articuladas" (gr. <i>arthron</i>, articulação + <i>pous</i>, pé)</p>
-      <div class="cards c4" style="margin-top:26px">${card('limulus', 'Merostomata', 'Limulus', '', 0)}${card('spider', 'Arachnida', 'aranha', '', 0)}${card('crab', 'Crustacea', 'caranguejo', '', 0)}${card('insect', 'Insecta', 'inseto', '', 0)}</div>
+      <div class="cards c4" style="margin-top:26px">${card('limulus', 'Merostomata', 'límulo', '', 0)}${card('spider', 'Arachnida', 'aranha', '', 0)}${card('crab', 'Crustacea', 'caranguejo', '', 0)}${card('insect', 'Insecta', 'inseto', '', 0)}</div>
       <p class="boardnote" style="margin-top:26px">Criado por Bernardo Teles e Mariana Viegas</p></div>`,
     steps: [{ n: 'Use <b>→</b> ou <b>espaço</b> para avançar e <b>←</b> para recuar. Nesta aula vamos <b>da filogenia aos organismos</b>: para cada grupo vemos um modelo por fora, por dentro, os apêndices e o ciclo de vida.' }, { n: 'Nos modelos: <b>arraste</b> para rodar, <b>roda do rato</b> para aproximar, <b>passe por cima de um nome</b> para ver a descrição. O botão <b>Modo teste</b> esconde os nomes.' }],
   },
@@ -312,7 +312,7 @@ const ALL = [
     html: () => classBoard([
       { name: 'Pycnogonida', sub: 'aranhas-do-mar', step: 1, orgs: [{ art: 'pycnogonid', label: 'Picnogónido', marks: [[52, 60], [66, 50], [130, 26]] }],
         feats: ['Probóscide à frente da boca', 'Ovígeros (transportam os ovos)', 'Tronco tão fino que o intestino e as gónadas entram nas patas'] },
-      { name: 'Merostomata', sub: 'límulos (só 4 espécies atuais)', step: 2, orgs: [{ art: 'limulus', label: 'Limulus', marks: [[50, 66], [70, 38], [178, 60]] }],
+      { name: 'Merostomata', sub: 'límulos (só 4 espécies atuais)', step: 2, orgs: [{ art: 'limulus', label: 'Límulo', marks: [[50, 66], [70, 38], [178, 60]] }],
         feats: ['Prossoma coberto por carapaça em ferradura', 'Olhos compostos laterais', 'Télson longo; brânquias foliáceas por baixo'] },
       { name: 'Arachnida', sub: 'aranhas, escorpiões, opiliões, ácaros…', step: 3, span: 2, numbered: false,
         orgs: [{ art: 'spider', label: 'Araneae', sub: 'pedicelo; seda e veneno' }, { art: 'scorpion', label: 'Scorpiones', sub: 'pedipalpos em pinça; aguilhão' }, { art: 'harvestman', label: 'Opiliones', sub: 'corpo num só bloco' }, { art: 'mite', label: 'Acari', sub: 'muitos microscópicos; carraças' }],
@@ -326,15 +326,15 @@ const ALL = [
     ],
   },
   {
-    sec: 'Chelicerata', title: '<em>Limulus</em> — morfologia externa', sub: 'Classe Merostomata · vista dorsal', model: 'limulus', view: 'hero',
+    sec: 'Chelicerata', title: 'Límulo — morfologia externa', sub: 'Merostomata · <i>Limulus polyphemus</i> · vista dorsal', model: 'limulus', view: 'hero',
     steps: [
-      { spin: true, n: 'O límulo (caranguejo-ferradura) vive em fundos marinhos pouco profundos. Apesar do nome, <b>não é um caranguejo</b>: é um quelicerado.' },
+      { spin: true, n: 'O <b>límulo</b> (ou caranguejo-ferradura, <i>Limulus polyphemus</i>) vive em fundos marinhos pouco profundos. Apesar do nome, <b>não é um caranguejo</b>: é um quelicerado.' },
       { view: 'dorsal', labels: ['prossoma', 'opist', 'charn', 'telson'], n: 'Dois tagmas: <b>prossoma</b> e <b>opistossoma</b>, unidos por uma <b>charneira</b>, e um <b>télson</b> longo.' },
       { labels: ['olhoc', 'ocelo', 'espinhos'], n: 'Olhos <b>compostos laterais</b> e dois <b>olhos medianos</b>. Repare nos espinhos móveis do opistossoma.' },
     ],
   },
   {
-    sec: 'Chelicerata', title: '<em>Limulus</em> — face ventral e apêndices', sub: 'O animal virado ao contrário', model: 'limulus', view: 'ventral', init: { param: { flip: 1 } },
+    sec: 'Chelicerata', title: 'Límulo — face ventral e apêndices', sub: '<i>Limulus polyphemus</i> · o animal virado ao contrário', model: 'limulus', view: 'ventral', init: { param: { flip: 1 } },
     steps: [
       { n: 'Virando o animal: todos os apêndices ficam escondidos por baixo da carapaça.' },
       { labels: ['boca', 'quel', 'gnato'], view: 'ventralClose', n: 'A <b>boca</b> fica no centro. À frente, as <b>quelíceras</b>; à volta, as <b>gnatobases</b> das coxas trituram o alimento.' },
@@ -344,7 +344,7 @@ const ALL = [
     ],
   },
   {
-    sec: 'Chelicerata', title: '<em>Limulus</em> — anatomia interna', sub: 'Corte sagital', model: 'limulus', view: 'lateral',
+    sec: 'Chelicerata', title: 'Límulo — anatomia interna', sub: '<i>Limulus polyphemus</i> · corte sagital', model: 'limulus', view: 'lateral',
     steps: [
       { n: 'Vamos fazer um corte pela linha média do corpo.' },
       { cut: 1, show: { legR: 0, int: 1 }, view: 'cut', n: 'Corte sagital: removemos a metade direita da carapaça e das patas.' },
@@ -639,7 +639,7 @@ const byTitle = (t) => { const x = ALL.find((sl) => sl.title.replace(/<[^>]+>/g,
 // espécie de cada fotografia (confirmada no Commons)
 const SP = { trilobita: 'Elrathia kingii (Câmbrico)', limulus: 'Limulus polyphemus', pycnogonida: 'Nymphon maculatum', araneae: 'Araneus diadematus', scorpiones: 'Buthus ibericus', opiliones: 'Phalangium opilio', acari: 'Ixodes ricinus', cephalocarida: 'Hutchinsoniella macracantha', triops: 'Triops cancriformis', daphnia: 'Daphnia magna', copepoda: 'Cyclops sp. (fêmea com sacos ovígeros)', cirripedia: 'Chthamalus stellatus', branchiura: 'Argulus sp.', ostracoda: 'Ostracoda', isopoda: 'Armadillidium vulgare', amphipoda: 'Talitrus saltator', euphausiacea: 'Euphausia superba', decapoda: 'Astacus astacus', chilopoda: 'Scolopendra cingulata', diplopoda: 'Ommatoiulus rutilans', pauropoda: 'Pauropodidae', symphyla: 'Symphyla', insecta: 'Calliptamus italicus', remipedia: 'Speleonectes tulumensis', nauplio: 'náuplio de copépode (microscópio)', protozoe: 'zoé de Lysmata amboinensis (microscópio)', misis: 'larva de Homarus americanus (coleção YPM)', camarao: 'Penaeus kerathurus (espécime, Ifremer)', monarca_ovo: 'Danaus plexippus — ovo', monarca_larva: 'Danaus plexippus — lagarta', monarca_pupa: 'Danaus plexippus — crisálida', monarca_adulto: 'Danaus plexippus — espécime MHNT' };
 const sp = (id) => (FOTOS[id] && SP[id] ? `<em class="sp">${SP[id]}</em>` : '');
-const FIT = { monarca_larva: '#4a6b2a', camarao: '#fff', monarca_adulto: '#fff', remipedia: '#fff', cephalocarida: '#fff', chilopoda: '#000', diplopoda: '#f4f4f4', trilobita: '#e8e2d2' };
+const FIT = { limulus: '#000', monarca_larva: '#4a6b2a', camarao: '#fff', monarca_adulto: '#fff', remipedia: '#fff', cephalocarida: '#fff', chilopoda: '#000', diplopoda: '#f4f4f4', trilobita: '#e8e2d2' };
 const pic = (id, art) => FOTOS[id]
   ? `<img src="fotos/${id}.jpg" ${FIT[id] ? `style="object-fit:contain;background:${FIT[id]}"` : ''} alt="" title="Foto: ${(FOTOS[id].artist || '').replace(/"/g, '')} (${FOTOS[id].license}), Wikimedia Commons">`
   : (art ? ART[art]().replace(/<text[^>]*>.*?<\/text>/g, '') : '');
@@ -686,7 +686,7 @@ const P = {
     sec: 'Chelicerata', title: 'Quelicerados', sub: 'Três classes',
     html: () => photoBoard([
       { name: 'Pycnogonida', sub: 'aranhas-do-mar', step: 1, orgs: [{ photo: 'pycnogonida', art: 'pycnogonid', label: 'Picnogónido' }], feats: ['Marinhos', 'Tronco fino; patas compridas', 'Probóscide'] },
-      { name: 'Merostomata', sub: 'límulos', step: 2, orgs: [{ photo: 'limulus', art: 'limulus', label: '<i>Limulus</i>' }], feats: ['Marinhos; só 4 espécies atuais', 'Carapaça em ferradura e télson'] },
+      { name: 'Merostomata', sub: 'límulos ou caranguejos-ferradura', step: 2, orgs: [{ photo: 'limulus', art: 'limulus', label: 'Límulo' }], feats: ['Marinhos; só 4 espécies atuais', 'Carapaça em ferradura e télson'] },
       { name: 'Arachnida', sub: 'aracnídeos', step: 3, span: 2, orgs: [{ photo: 'araneae', art: 'spider', label: 'Araneae', sub: 'aranhas' }, { photo: 'scorpiones', art: 'scorpion', label: 'Scorpiones', sub: 'escorpiões' }, { photo: 'opiliones', art: 'harvestman', label: 'Opiliones', sub: 'opiliões' }, { photo: 'acari', art: 'mite', label: 'Acari', sub: 'ácaros e carraças' }], feats: ['Quase todos terrestres', 'Respiram por pulmões foliáceos e/ou traqueias'] },
     ]),
     steps: [{ n: 'Os quelicerados dividem-se em <b>três classes</b>.' }, { n: '<b>Pycnogonida</b>: o corpo é quase só patas.' }, { n: '<b>Merostomata</b>: o límulo — vamos observá-lo a seguir.' }, { n: '<b>Arachnida</b>: várias ordens com formas de corpo diferentes. Depois do límulo, observamos uma <b>aranha</b>.' }],
@@ -753,7 +753,7 @@ const P = {
 
 export const SLIDES = [
   P.titulo, P.subfilos,
-  P.chelicerata, byTitle('Limulus — morfologia externa'), byTitle('Limulus — face ventral e apêndices'), byTitle('Limulus — anatomia interna'),
+  P.chelicerata, byTitle('Límulo — morfologia externa'), byTitle('Límulo — face ventral e apêndices'), byTitle('Límulo — anatomia interna'),
   byTitle('Aranha — morfologia externa'), byTitle('Aranha — apêndices'), byTitle('Aranha — anatomia interna'),
   P.crustacea, byTitle('Lagostim — morfologia externa'), byTitle('Lagostim — os 19 pares de apêndices'), byTitle('Lagostim — anatomia interna'), byTitle('Lagostim — corte transversal'), P.cicloCamarao,
   byTitle('Daphnia — morfologia externa'), byTitle('Daphnia — por dentro e reprodução'),

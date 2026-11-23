@@ -38,7 +38,7 @@ export function buildLimulus() {
     root.add(o);
   }
   A('prossoma', V(-1.1, 0.78, 0.4), 'Prossoma (carapaça)', 'Escudo dorsal em forma de ferradura que cobre o prossoma (cefalotórax). Protege os apêndices, que ficam todos por baixo.', 'ext dors');
-  A('olhoc', V(-0.55, surf(-0.55, 0.92) + 0.03, 0.92), 'Olho composto lateral', 'Um par de olhos compostos sobre as cristas laterais. Os de Limulus são modelo clássico em neurofisiologia da visão.', 'ext dors');
+  A('olhoc', V(-0.55, surf(-0.55, 0.92) + 0.03, 0.92), 'Olho composto lateral', 'Um par de olhos compostos sobre as cristas laterais. Os do límulo são modelo clássico em neurofisiologia da visão.', 'ext dors');
   A('ocelo', V(-1.55, surf(-1.55, 0.07) + 0.03, 0.07), 'Olhos medianos (ocelos)', 'Dois olhos simples junto à linha média, sensíveis sobretudo a UV.', 'ext dors');
 
   // charneira
