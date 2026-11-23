@@ -1,26 +1,94 @@
 [
- {"id":"trilobita","q":["trilobite fossil","Elrathia kingii"]},
- {"id":"limulus","q":["Limulus polyphemus"]},
- {"id":"pycnogonida","q":["Pycnogonida","Nymphon","Pycnogonum littorale"]},
- {"id":"araneae","q":["Araneus diadematus","Argiope bruennichi"]},
- {"id":"scorpiones","q":["Buthus occitanus","Euscorpius","scorpion"]},
- {"id":"opiliones","q":["Opiliones","Phalangium opilio"]},
- {"id":"acari","q":["Ixodes ricinus"]},
- {"id":"remipedia","q":["Remipedia","Xibalbanus","Speleonectes"]},
- {"id":"cephalocarida","q":["Hutchinsoniella macracantha","Cephalocarida"]},
- {"id":"triops","q":["Triops cancriformis"]},
- {"id":"daphnia","q":["Daphnia magna","Daphnia pulex"]},
- {"id":"copepoda","q":["Calanus finmarchicus","Cyclops copepod","Copepoda"]},
- {"id":"cirripedia","q":["Semibalanus balanoides","Chthamalus","Pollicipes pollicipes"]},
- {"id":"branchiura","q":["Argulus"]},
- {"id":"ostracoda","q":["Ostracoda"]},
- {"id":"isopoda","q":["Armadillidium vulgare"]},
- {"id":"amphipoda","q":["Talitrus saltator","Gammarus"]},
- {"id":"euphausiacea","q":["Euphausia superba","Meganyctiphanes norvegica"]},
- {"id":"decapoda","q":["Procambarus clarkii","Astacus astacus"]},
- {"id":"chilopoda","q":["Scolopendra cingulata","Lithobius forficatus"]},
- {"id":"diplopoda","q":["Ommatoiulus","Tachypodoiulus niger","Glomeris marginata"]},
- {"id":"pauropoda","q":["Pauropoda"]},
- {"id":"symphyla","q":["Symphyla","Scutigerella immaculata"]},
- {"id":"insecta","q":["Oedipoda caerulescens","Calliptamus italicus","Locusta migratoria"]}
+ {
+  "id": "trilobita",
+  "file": "ElrathiakingiUtahWheelerCambrian.jpg"
+ },
+ {
+  "id": "limulus",
+  "file": "Limule(dD).jpg"
+ },
+ {
+  "id": "pycnogonida",
+  "file": "Nymphon maculatum 2011-721 (1) (cropped).jpg"
+ },
+ {
+  "id": "araneae",
+  "file": "Araneus diadematus - Keila.jpg"
+ },
+ {
+  "id": "scorpiones",
+  "file": "Buthus ibericus.jpg"
+ },
+ {
+  "id": "opiliones",
+  "file": "Phalangium opilio MHNT Male.jpg"
+ },
+ {
+  "id": "acari",
+  "file": "Ixodes ricinus on dry grass.jpg"
+ },
+ {
+  "id": "cephalocarida",
+  "file": "Hutchinsoniella macracantha (YPM IZ 003617.CR) 002.jpeg"
+ },
+ {
+  "id": "triops",
+  "file": "Triops cancriformis spain green 02.jpg"
+ },
+ {
+  "id": "daphnia",
+  "file": "Daphnia magna asexual.jpg"
+ },
+ {
+  "id": "copepoda",
+  "file": "Oczlik (Cyclops) - samica.jpg"
+ },
+ {
+  "id": "cirripedia",
+  "file": "Chthamalus stellatus.jpg"
+ },
+ {
+  "id": "branchiura",
+  "file": "Common Fish Lice.jpg"
+ },
+ {
+  "id": "ostracoda",
+  "file": "Karpvähiline0424.jpg"
+ },
+ {
+  "id": "isopoda",
+  "file": "Armadillidium vulgare female.jpg"
+ },
+ {
+  "id": "amphipoda",
+  "file": "Talitrus saltator 2c.jpg"
+ },
+ {
+  "id": "euphausiacea",
+  "file": "Antarctic krill (Euphausia superba).jpg"
+ },
+ {
+  "id": "decapoda",
+  "file": "European crayfish (Astacus astacus).jpg"
+ },
+ {
+  "id": "chilopoda",
+  "file": "Scolopendra cingulata à la Beauchêne MHNT CUT 2014 14 11.jpg"
+ },
+ {
+  "id": "diplopoda",
+  "file": "Ommatoiulus rutilans.jpg"
+ },
+ {
+  "id": "pauropoda",
+  "file": "Pauropodid (8701483114).jpg"
+ },
+ {
+  "id": "symphyla",
+  "file": "18 - Symphyla sp. (51267438261) transparentbg.jpg"
+ },
+ {
+  "id": "insecta",
+  "file": "Calliptamus italicus03.jpg"
+ }
 ]
