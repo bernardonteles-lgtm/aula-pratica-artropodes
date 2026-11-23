@@ -103,6 +103,7 @@ function fitHtml() {
   const host = $('#html');
   const fit = host.querySelector('.fit');
   if (!fit || fit.classList.contains('fill') || !host.classList.contains('on')) return;
+  fitting = true;
   fit.style.transform = 'none';
   const pad = 24;
   const aw = host.clientWidth - pad, ah = host.clientHeight - pad;
@@ -111,13 +112,16 @@ function fitHtml() {
   let sc = Math.min(1.35, aw / w, ah / h);
   const hs = host.querySelector('.hs');
   // em ecrãs estreitos, em vez de encolher demasiado, deixa fazer scroll
-  const scroll = sc < 0.62 && aw < 720;
+  const scroll = sc < 0.5 && aw < 520;
   hs.classList.toggle('scroll', scroll);
   if (scroll) sc = Math.min(1, aw / w);
   fit.style.transform = `scale(${sc})`;
   if (scroll) fit.style.marginBottom = `${-(1 - sc) * h}px`; else fit.style.marginBottom = '';
+  requestAnimationFrame(() => { fitting = false; });
 }
 new ResizeObserver(() => fitHtml()).observe(document.querySelector('#html'));
+let fitting = false;
+const fitRO = new ResizeObserver(() => { if (!fitting) requestAnimationFrame(fitHtml); });
 
 function hideTip() { const t = document.querySelector('#tip'); if (t) t.style.opacity = 0; }
 
@@ -156,6 +160,10 @@ function show(newSi, newStep) {
       const fitEl = host.querySelector('.fit');
       const first = fitEl.firstElementChild;
       fitEl.classList.toggle('fill', !!first && (first.classList.contains('full') || first.style.height === '100%'));
+      // voltar a ajustar quando as fotografias acabam de carregar (mudam a altura do conteúdo)
+      fitEl.querySelectorAll('img').forEach((im) => { if (!im.complete) { im.addEventListener('load', fitHtml); im.addEventListener('error', fitHtml); } });
+      fitRO.disconnect();
+      fitRO.observe(fitEl);
     }
     applyHtml(slide, step);
     fitHtml();

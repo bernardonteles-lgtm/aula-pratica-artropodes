@@ -641,7 +641,7 @@ const SP = { trilobita: 'Elrathia kingii (Câmbrico)', limulus: 'Limulus polyphe
 const sp = (id) => (FOTOS[id] && SP[id] ? `<em class="sp">${SP[id]}</em>` : '');
 const FIT = { cephalocarida: '#fff', chilopoda: '#000', diplopoda: '#f4f4f4', trilobita: '#e8e2d2' };
 const pic = (id, art) => FOTOS[id]
-  ? `<img src="fotos/${id}.jpg" ${FIT[id] ? `style="object-fit:contain;background:${FIT[id]}"` : ''} alt="" loading="lazy" title="Foto: ${(FOTOS[id].artist || '').replace(/"/g, '')} (${FOTOS[id].license}), Wikimedia Commons">`
+  ? `<img src="fotos/${id}.jpg" ${FIT[id] ? `style="object-fit:contain;background:${FIT[id]}"` : ''} alt="" title="Foto: ${(FOTOS[id].artist || '').replace(/"/g, '')} (${FOTOS[id].license}), Wikimedia Commons">`
   : (art ? ART[art]().replace(/<text[^>]*>.*?<\/text>/g, '') : '');
 const photoBoard = (cols, strip) => `<div class="cwrap"><div class="cboard photos" style="--n:${cols.reduce((a, c) => a + (c.span || 1), 0)}">${cols.map((c) => `
   <div class="ccol" data-now="${c.step}" style="${c.span ? `grid-column:span ${c.span}` : ''}">
