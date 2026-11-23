@@ -101,7 +101,8 @@
  },
  {
   "id": "protozoe",
-  "file": "Lysmata amboinensis zoea 1.jpg"
+  "file": "Lysmata amboinensis zoea 1.jpg",
+  "retry": 1
  },
  {
   "id": "misis",

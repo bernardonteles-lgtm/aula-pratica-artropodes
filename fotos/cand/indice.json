@@ -1413,6 +1413,5 @@
    "h": 768,
    "big": "https://inaturalist-open-data.s3.amazonaws.com/photos/615002914/large.jpg"
   }
- ],
- "protozoe__erro": "HTTP Error 429: Too many requests. Please contact the Wikimedia SRE team at noc@wikimedia.org and refer to this message. (daab851)"
+ ]
 }
