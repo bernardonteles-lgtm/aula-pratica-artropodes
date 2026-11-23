@@ -109,19 +109,32 @@ function fitHtml() {
   const fit = host.querySelector('.fit');
   if (!fit || fit.classList.contains('fill') || !host.classList.contains('on')) return;
   fitting = true;
-  fit.style.transform = 'none';
-  const pad = 24;
-  const aw = host.clientWidth - pad, ah = host.clientHeight - pad;
-  const w = fit.offsetWidth, h = fit.offsetHeight;
-  if (!w || !h) return;
-  let sc = Math.min(1.35, aw / w, ah / h);
   const hs = host.querySelector('.hs');
-  // em ecrãs estreitos, em vez de encolher demasiado, deixa fazer scroll
-  const scroll = sc < 0.5 && aw < 520;
-  hs.classList.toggle('scroll', scroll);
-  if (scroll) sc = Math.min(1, aw / w);
+  hs.classList.remove('scroll');
+  fit.style.marginBottom = '';
+  const pad = 28;
+  const aw = host.clientWidth - pad, ah = host.clientHeight - pad;
+  // procura a maior escala s em que o conteúdo, com largura aw/s, cabe na altura:
+  // primeiro reorganiza (mais/menos colunas), só depois encolhe
+  fit.querySelectorAll('.cyc').forEach((c) => c.classList.toggle('narrow', aw < 640 || ah > aw * 1.1));
+  fit.style.setProperty('--ph', Math.round(Math.max(75, Math.min(210, ah * 0.2))) + 'px');
+  const test = (sc) => { fit.style.width = aw / sc + 'px'; fit.style.transform = 'none'; return fit.offsetHeight * sc <= ah; };
+  let lo = 0.4, hi = 1.3;
+  if (test(hi)) lo = hi;
+  else {
+    for (let i = 0; i < 9; i++) { const m = (lo + hi) / 2; if (test(m)) lo = m; else hi = m; }
+  }
+  let sc = lo;
+  // no telemóvel, em vez de texto minúsculo, deixa fazer scroll
+  if (sc < 0.72 && aw < 560) {
+    sc = 1;
+    fit.style.width = aw + 'px';
+    hs.classList.add('scroll');
+  } else fit.style.width = aw / sc + 'px';
   fit.style.transform = `scale(${sc})`;
-  if (scroll) fit.style.marginBottom = `${-(1 - sc) * h}px`; else fit.style.marginBottom = '';
+  const h = fit.offsetHeight;
+  fit.style.marginBottom = `${-(1 - sc) * h}px`;
+  fit.style.marginTop = hs.classList.contains('scroll') ? '' : `${-(1 - sc) * h / 2 * 0}px`;
   requestAnimationFrame(() => { fitting = false; });
 }
 new ResizeObserver(() => fitHtml()).observe(document.querySelector('#html'));

@@ -643,36 +643,25 @@ const FIT = { remipedia: '#fff', cephalocarida: '#fff', chilopoda: '#000', diplo
 const pic = (id, art) => FOTOS[id]
   ? `<img src="fotos/${id}.jpg" ${FIT[id] ? `style="object-fit:contain;background:${FIT[id]}"` : ''} alt="" title="Foto: ${(FOTOS[id].artist || '').replace(/"/g, '')} (${FOTOS[id].license}), Wikimedia Commons">`
   : (art ? ART[art]().replace(/<text[^>]*>.*?<\/text>/g, '') : '');
-const photoBoard = (cols, strip) => `<div class="cwrap"><div class="cboard photos" style="--n:${cols.reduce((a, c) => a + (c.span || 1), 0)}">${cols.map((c) => `
-  <div class="ccol" data-now="${c.step}" style="${c.span ? `grid-column:span ${c.span}` : ''}">
+const photoBoard = (cols, strip, layout = '') => `<div class="cwrap"><div class="cboard photos ${layout}" style="--n:${cols.reduce((a, c) => a + (c.span || 1), 0)}">${cols.map((c) => `
+  <div class="ccol" data-now="${c.step}" style="--sp:${c.span || 1};${c.span && !layout ? `grid-column:span ${c.span}` : ''}">
     <div class="ch2">${c.name}<small>${c.sub || ''}</small></div>
     <div class="body" data-s="${c.step}">
-      <div class="orgs ${c.orgs.length > 1 ? 'g2' : ''}">${c.orgs.map((o) => `<div class="org">${pic(o.photo, o.art)}<span><b>${o.label}</b>${o.sub || ''}${sp(o.photo)}</span></div>`).join('')}</div>
+      <div class="orgs ${c.orgs.length > 1 ? 'g2' : ''} ${c.orgs.length === 2 ? 'n2' : ''} ${c.orgs.length === 4 && layout ? 'g4' : ''}">${c.orgs.map((o) => `<div class="org">${pic(o.photo, o.art)}<span><b>${o.label}</b>${o.sub || ''}${sp(o.photo)}</span></div>`).join('')}</div>
       <ul class="tr">${c.feats.map((f) => `<li>${f}</li>`).join('')}</ul>
     </div>
   </div>`).join('')}</div>${strip ? `<div class="strip" data-s="${strip.step}">${strip.html}</div>` : ''}</div>`;
 
 
-const photoCycle = (stages, cx, cy, R, rx, note) => {
-  let s = '';
-  stages.forEach(([id, art, name, step], j) => {
-    const a = -Math.PI / 2 + (j / stages.length) * Math.PI * 2;
-    const x = cx + Math.cos(a) * rx, y = cy + Math.sin(a) * R;
-    const w = 270, h = 180;
-    const img = FOTOS[id]
-      ? `<image href="fotos/${id}.jpg" x="${x - w / 2 + 4}" y="${y - h / 2 + 4}" width="${w - 8}" height="${h - 8}" preserveAspectRatio="xMidYMid slice"/>`
-      : `<svg x="${x - w / 2 + 4}" y="${y - h / 2 + 4}" width="${w - 8}" height="${h - 8}" viewBox="0 0 200 120">${ART[art]().replace(/^<svg[^>]*>|<\/svg>$/g, '').replace(/<text[^>]*>.*?<\/text>/g, '')}</svg>`;
-    s += `<g data-s="${step}"><rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="8" fill="#f4eedd"/>${img}`;
-    s += `<text x="${x}" y="${y + h / 2 + 22}" text-anchor="middle" class="lbl2 hand" font-size="24">${name}</text>`;
-    if (SP[id] && FOTOS[id]) s += `<text x="${x}" y="${y + h / 2 + 40}" text-anchor="middle" class="small" font-size="14" font-style="italic">${SP[id]}</text>`;
-    s += '</g>';
-    const a2 = -Math.PI / 2 + ((j + 1) / stages.length) * Math.PI * 2;
-    s += `<g data-s="${stages[(j + 1) % stages.length][3] || stages.length}">${arrow(cx + Math.cos(a + 0.42) * rx * 0.86, cy + Math.sin(a + 0.42) * R * 0.86, cx + Math.cos(a2 - 0.42) * rx * 0.86, cy + Math.sin(a2 - 0.42) * R * 0.86)}</g>`;
-  });
-  if (note) s += note;
-  return S(s, '0 0 1000 660');
+const photoCycle = (stages, _cx, _cy, _R, _rx, note) => {
+  const arrows = ['↘', '↙', '↖', '↗'];
+  const mid = (note || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const noteStep = ((note || '').match(/data-s="(\d+)"/) || [0, 0])[1];
+  return `<div class="cyc">${stages.map(([id, art, name, step], j) => `
+    <div class="st s${j}" data-s="${step}">${pic(id, art)}<b data-n="${j + 1}">${name}</b>${SP[id] && FOTOS[id] ? `<i>${SP[id]}</i>` : ''}</div>
+    <div class="ar a${j}" data-s="${stages[(j + 1) % stages.length][3] || stages.length}">${arrows[j]}</div>`).join('')}
+    ${mid ? `<div class="mid" data-s="${noteStep}">${mid}</div>` : ''}</div>`;
 };
-
 const P = {
   titulo: {
     sec: 'Introdução', title: 'Filo <em>Arthropoda</em>', sub: 'Aula prática',
@@ -705,12 +694,12 @@ const P = {
   crustacea: {
     sec: 'Crustacea', title: 'Crustáceos', sub: 'As cinco classes do manual',
     html: () => photoBoard([
-      { name: 'Remipedia', sub: 'remípedes', step: 1, orgs: [{ photo: 'remipedia', art: 'remipede', label: 'Remípede' }], feats: ['Grutas marinhas; cegos', 'Muitos segmentos iguais'] },
-      { name: 'Cephalocarida', sub: 'cefalocarídeos', step: 2, orgs: [{ photo: 'cephalocarida', art: 'cephalocarid', label: 'Cefalocarídeo' }], feats: ['Minúsculos, em sedimentos marinhos'] },
-      { name: 'Branchiopoda', sub: 'branquiópodes', step: 3, orgs: [{ photo: 'triops', art: 'triops', label: '<i>Triops</i>' }, { photo: 'daphnia', art: 'daphnia', label: '<i>Daphnia</i>' }], feats: ['Patas foliáceas', 'Sobretudo água doce'] },
-      { name: 'Maxillopoda', sub: 'grupo diverso', step: 4, orgs: [{ photo: 'copepoda', art: 'copepod', label: 'Copepoda' }, { photo: 'cirripedia', art: 'barnacle', label: 'Cirripedia', sub: 'cracas' }, { photo: 'branchiura', art: 'argulus', label: 'Branchiura' }, { photo: 'ostracoda', art: 'ostracod', label: 'Ostracoda' }], feats: ['Pequenos; abdómen reduzido'] },
-      { name: 'Malacostraca', sub: 'a maior classe', step: 5, orgs: [{ photo: 'isopoda', art: 'isopod', label: 'Isopoda', sub: 'bichos-de-conta' }, { photo: 'amphipoda', art: 'amphipod', label: 'Amphipoda', sub: 'pulgas-da-areia' }, { photo: 'euphausiacea', art: 'krill', label: 'Euphausiacea', sub: 'krill' }, { photo: 'decapoda', art: 'crab', label: 'Decapoda', sub: 'lagostins…' }], feats: ['Tórax com 8 segmentos, abdómen com 6'] },
-    ]),
+      { name: 'Remipedia', sub: 'remípedes', step: 1, span: 2, orgs: [{ photo: 'remipedia', art: 'remipede', label: 'Remípede' }], feats: ['Grutas marinhas; cegos', 'Muitos segmentos iguais'] },
+      { name: 'Cephalocarida', sub: 'cefalocarídeos', step: 2, span: 2, orgs: [{ photo: 'cephalocarida', art: 'cephalocarid', label: 'Cefalocarídeo' }], feats: ['Minúsculos, em sedimentos marinhos'] },
+      { name: 'Branchiopoda', sub: 'branquiópodes', step: 3, span: 2, orgs: [{ photo: 'triops', art: 'triops', label: '<i>Triops</i>' }, { photo: 'daphnia', art: 'daphnia', label: '<i>Daphnia</i>' }], feats: ['Patas foliáceas', 'Sobretudo água doce'] },
+      { name: 'Maxillopoda', sub: 'grupo diverso', step: 4, span: 3, orgs: [{ photo: 'copepoda', art: 'copepod', label: 'Copepoda' }, { photo: 'cirripedia', art: 'barnacle', label: 'Cirripedia', sub: 'cracas' }, { photo: 'branchiura', art: 'argulus', label: 'Branchiura' }, { photo: 'ostracoda', art: 'ostracod', label: 'Ostracoda' }], feats: ['Pequenos; abdómen reduzido'] },
+      { name: 'Malacostraca', sub: 'a maior classe', step: 5, span: 3, orgs: [{ photo: 'isopoda', art: 'isopod', label: 'Isopoda', sub: 'bichos-de-conta' }, { photo: 'amphipoda', art: 'amphipod', label: 'Amphipoda', sub: 'pulgas-da-areia' }, { photo: 'euphausiacea', art: 'krill', label: 'Euphausiacea', sub: 'krill' }, { photo: 'decapoda', art: 'crab', label: 'Decapoda', sub: 'lagostins…' }], feats: ['Tórax com 8 segmentos, abdómen com 6'] },
+    ], null, 'six'),
     steps: [{ n: 'O manual divide os crustáceos em <b>cinco classes</b>.' }, { n: '<b>Remipedia</b>' }, { n: '<b>Cephalocarida</b>' }, { n: '<b>Branchiopoda</b>: a <i>Daphnia</i> é um deles.' }, { n: '<b>Maxillopoda</b>: copépodes, cracas, Branchiura, ostracodes.' }, { n: '<b>Malacostraca</b>: inclui o <b>lagostim</b>, que vamos observar.' }],
   },
   miriapodes: {
