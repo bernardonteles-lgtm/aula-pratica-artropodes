@@ -57,9 +57,38 @@ cred = json.load(open('fotos/creditos.json')) if os.path.exists('fotos/creditos.
 os.makedirs('fotos/cand', exist_ok=True)
 indice = json.load(open('fotos/cand/indice.json')) if os.path.exists('fotos/cand/indice.json') else {}
 
+INAT = 'https://api.inaturalist.org/v1/observations'
+STAGE = {'ovo': 7, 'larva': 6, 'pupa': 4, 'adulto': 2}
+
+
+def inat_cands(name, stage=None, n=8):
+    q = {'taxon_name': name, 'quality_grade': 'research', 'photo_license': 'cc0,cc-by,cc-by-sa', 'per_page': n, 'order_by': 'votes'}
+    if stage:
+        q.update({'term_id': 1, 'term_value_id': STAGE[stage]})
+    d = json.loads(fetch(INAT + '?' + urllib.parse.urlencode(q)))
+    out = []
+    for o in d.get('results', []):
+        for ph in o.get('photos', [])[:1]:
+            lic = (ph.get('license_code') or '').upper()
+            if not lic or 'NC' in lic or 'ND' in lic:
+                continue
+            out.append({'title': f"iNaturalist {o['id']}: {o.get('taxon', {}).get('name', name)}", 'thumb': ph['url'].replace('square', 'medium'),
+                        'big': ph['url'].replace('square', 'large'), 'license': lic.replace('CC-', 'CC ').replace('CC0', 'CC0'),
+                        'artist': (ph.get('attribution') or '')[:140], 'source': o.get('uri'), 'desc': o.get('place_guess', '') or '',
+                        'quality': False, 'w': 1024, 'h': 768})
+    return out
+
+
 for it in lista:
     tid = it['id']
     try:
+        if it.get('url'):
+            if tid in cred and cred[tid].get('source') == it['source'] and os.path.exists(f'fotos/{tid}.jpg'):
+                continue
+            open(f'fotos/{tid}.jpg', 'wb').write(fetch(it['url']))
+            cred[tid] = {k: it[k] for k in ('title', 'license', 'artist', 'source')}
+            time.sleep(2)
+            continue
         if it.get('file'):
             if tid in cred and cred[tid]['title'] == 'File:' + it['file'] and os.path.exists(f'fotos/{tid}.jpg'):
                 continue
@@ -72,7 +101,8 @@ for it in lista:
         if tid in indice and not it.get('refresh'):
             continue
         seen, cands = set(), []
-        qs = it['q'] if isinstance(it['q'], list) else [it['q']]
+        qs = it.get('q', [])
+        qs = qs if isinstance(qs, list) else [qs]
         for q in qs:
             for extra in (' incategory:"Quality_images"', ''):
                 r = get({'action': 'query', 'prop': 'imageinfo', 'iiprop': 'url|extmetadata|size|mime', 'iiurlwidth': 330,
@@ -84,10 +114,13 @@ for it in lista:
                 time.sleep(2)
         cands.sort(key=lambda x: (not x['quality'], x['idx']))
         cands = cands[:10]
+        for nm in it.get('inat', []):
+            cands += inat_cands(nm, it.get('stage'))
+            time.sleep(2)
         for k, x in enumerate(cands):
             open(f'fotos/cand/{tid}_{k}.jpg', 'wb').write(fetch(x['thumb']))
             time.sleep(1.5)
-        indice[tid] = [{kk: x[kk] for kk in ('title', 'license', 'artist', 'source', 'desc', 'quality', 'w', 'h')} for x in cands]
+        indice[tid] = [{kk: x.get(kk) for kk in ('title', 'license', 'artist', 'source', 'desc', 'quality', 'w', 'h', 'big')} for x in cands]
     except Exception as e:
         indice[tid + '__erro'] = str(e)
 

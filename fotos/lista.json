@@ -98,7 +98,11 @@
    "Xibalbanus tulumensis",
    "Remipede",
    "Speleonectes"
-  ]
+  ],
+  "inat": [
+   "Remipedia"
+  ],
+  "refresh": true
  },
  {
   "id": "nauplio",
@@ -107,7 +111,8 @@
    "Penaeus nauplius",
    "shrimp nauplius",
    "nauplius"
-  ]
+  ],
+  "refresh": true
  },
  {
   "id": "protozoe",
@@ -115,7 +120,8 @@
    "protozoea larva",
    "Penaeus protozoea",
    "zoea larva"
-  ]
+  ],
+  "refresh": true
  },
  {
   "id": "misis",
@@ -123,7 +129,8 @@
    "mysis larva shrimp",
    "Penaeus mysis",
    "mysis stage"
-  ]
+  ],
+  "refresh": true
  },
  {
   "id": "camarao",
@@ -131,33 +138,58 @@
    "Penaeus kerathurus",
    "Penaeus monodon",
    "Litopenaeus vannamei"
-  ]
+  ],
+  "inat": [
+   "Penaeus kerathurus",
+   "Penaeus"
+  ],
+  "refresh": true
  },
  {
   "id": "monarca_ovo",
   "q": [
    "Danaus plexippus egg",
    "monarch butterfly egg"
-  ]
+  ],
+  "inat": [
+   "Danaus plexippus"
+  ],
+  "stage": "ovo",
+  "refresh": true
  },
  {
   "id": "monarca_larva",
   "q": [
    "Danaus plexippus caterpillar",
    "monarch caterpillar"
-  ]
+  ],
+  "inat": [
+   "Danaus plexippus"
+  ],
+  "stage": "larva",
+  "refresh": true
  },
  {
   "id": "monarca_pupa",
   "q": [
    "Danaus plexippus chrysalis",
    "monarch chrysalis"
-  ]
+  ],
+  "inat": [
+   "Danaus plexippus"
+  ],
+  "stage": "pupa",
+  "refresh": true
  },
  {
   "id": "monarca_adulto",
   "q": [
    "Danaus plexippus"
-  ]
+  ],
+  "inat": [
+   "Danaus plexippus"
+  ],
+  "stage": "adulto",
+  "refresh": true
  }
 ]
