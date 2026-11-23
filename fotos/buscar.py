@@ -106,19 +106,20 @@ for it in lista:
         for q in qs:
             for extra in (' incategory:"Quality_images"', ''):
                 r = get({'action': 'query', 'prop': 'imageinfo', 'iiprop': 'url|extmetadata|size|mime', 'iiurlwidth': 330,
-                         'generator': 'search', 'gsrsearch': q + ' filetype:bitmap' + extra, 'gsrnamespace': 6, 'gsrlimit': 15})
+                         'generator': 'search', 'gsrsearch': q + ' filetype:bitmap' + extra, 'gsrnamespace': 6, 'gsrlimit': 12})
                 for x in info(list(r.get('query', {}).get('pages', {}).values())):
                     if x['title'] not in seen and usable(x):
                         seen.add(x['title'])
                         cands.append(x)
                 time.sleep(2)
-        cands.sort(key=lambda x: (not x['quality'], x['idx']))
-        cands = cands[:10]
+        SCI = re.compile(r'MHNT|YPM|USNM|NHM|specimen|microscop|SEM|larva|nauplius|zoea|mysis|instar|peerj|zootaxa|plos|figure|fig', re.I)
+        cands.sort(key=lambda x: (not SCI.search(x['title'] or ''), not x['quality'], x['idx']))
+        cands = cands[:15]
         for nm in it.get('inat', []):
             cands += inat_cands(nm, it.get('stage'))
             time.sleep(2)
         for k, x in enumerate(cands):
-            open(f'fotos/cand/{tid}_{k}.jpg', 'wb').write(fetch(x['thumb']))
+            open(f'fotos/cand/{tid}_{k}.jpg', 'wb').write(fetch(x.get('thumb') or x.get('big')))
             time.sleep(1.5)
         indice[tid] = [{kk: x.get(kk) for kk in ('title', 'license', 'artist', 'source', 'desc', 'quality', 'w', 'h', 'big')} for x in cands]
     except Exception as e:
