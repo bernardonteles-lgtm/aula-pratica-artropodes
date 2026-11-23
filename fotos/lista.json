@@ -90,5 +90,74 @@
  {
   "id": "insecta",
   "file": "Calliptamus italicus03.jpg"
+ },
+ {
+  "id": "remipedia",
+  "q": [
+   "Speleonectes tulumensis",
+   "Xibalbanus tulumensis",
+   "Remipede",
+   "Speleonectes"
+  ]
+ },
+ {
+  "id": "nauplio",
+  "q": [
+   "nauplius larva",
+   "Penaeus nauplius",
+   "shrimp nauplius",
+   "nauplius"
+  ]
+ },
+ {
+  "id": "protozoe",
+  "q": [
+   "protozoea larva",
+   "Penaeus protozoea",
+   "zoea larva"
+  ]
+ },
+ {
+  "id": "misis",
+  "q": [
+   "mysis larva shrimp",
+   "Penaeus mysis",
+   "mysis stage"
+  ]
+ },
+ {
+  "id": "camarao",
+  "q": [
+   "Penaeus kerathurus",
+   "Penaeus monodon",
+   "Litopenaeus vannamei"
+  ]
+ },
+ {
+  "id": "monarca_ovo",
+  "q": [
+   "Danaus plexippus egg",
+   "monarch butterfly egg"
+  ]
+ },
+ {
+  "id": "monarca_larva",
+  "q": [
+   "Danaus plexippus caterpillar",
+   "monarch caterpillar"
+  ]
+ },
+ {
+  "id": "monarca_pupa",
+  "q": [
+   "Danaus plexippus chrysalis",
+   "monarch chrysalis"
+  ]
+ },
+ {
+  "id": "monarca_adulto",
+  "q": [
+   "Danaus plexippus"
+  ]
  }
 ]
