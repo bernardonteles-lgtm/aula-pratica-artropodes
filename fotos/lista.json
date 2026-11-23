@@ -1,99 +1,26 @@
 [
- {
-  "id": "trilobita",
-  "q": "trilobite fossil Elrathia"
- },
- {
-  "id": "limulus",
-  "q": "Limulus polyphemus"
- },
- {
-  "id": "pycnogonida",
-  "q": "Pycnogonum littorale",
-  "refresh": true
- },
- {
-  "id": "araneae",
-  "q": "Araneus diadematus"
- },
- {
-  "id": "scorpiones",
-  "q": "Buthus occitanus"
- },
- {
-  "id": "opiliones",
-  "q": "Opiliones harvestman"
- },
- {
-  "id": "acari",
-  "q": "Ixodes ricinus tick"
- },
- {
-  "id": "remipedia",
-  "q": "Remipedia Speleonectes"
- },
- {
-  "id": "cephalocarida",
-  "q": "Hutchinsoniella macracantha"
- },
- {
-  "id": "triops",
-  "q": "Triops cancriformis"
- },
- {
-  "id": "daphnia",
-  "q": "Daphnia magna"
- },
- {
-  "id": "copepoda",
-  "q": "copepod plankton"
- },
- {
-  "id": "cirripedia",
-  "q": "barnacles Chthamalus rock"
- },
- {
-  "id": "branchiura",
-  "q": "Argulus fish louse"
- },
- {
-  "id": "ostracoda",
-  "q": "ostracod"
- },
- {
-  "id": "isopoda",
-  "q": "Armadillidium vulgare"
- },
- {
-  "id": "amphipoda",
-  "q": "Talitrus saltator"
- },
- {
-  "id": "euphausiacea",
-  "q": "Euphausia superba krill"
- },
- {
-  "id": "decapoda",
-  "q": "Procambarus clarkii"
- },
- {
-  "id": "chilopoda",
-  "q": "Scolopendra cingulata"
- },
- {
-  "id": "diplopoda",
-  "q": "millipede Julida"
- },
- {
-  "id": "pauropoda",
-  "q": "Pauropoda"
- },
- {
-  "id": "symphyla",
-  "q": "Symphyla Scutigerella"
- },
- {
-  "id": "insecta",
-  "q": "Oedipoda caerulescens"
- }
+ {"id":"trilobita","q":["trilobite fossil","Elrathia kingii"]},
+ {"id":"limulus","q":["Limulus polyphemus"]},
+ {"id":"pycnogonida","q":["Pycnogonida","Nymphon","Pycnogonum littorale"]},
+ {"id":"araneae","q":["Araneus diadematus","Argiope bruennichi"]},
+ {"id":"scorpiones","q":["Buthus occitanus","Euscorpius","scorpion"]},
+ {"id":"opiliones","q":["Opiliones","Phalangium opilio"]},
+ {"id":"acari","q":["Ixodes ricinus"]},
+ {"id":"remipedia","q":["Remipedia","Xibalbanus","Speleonectes"]},
+ {"id":"cephalocarida","q":["Hutchinsoniella macracantha","Cephalocarida"]},
+ {"id":"triops","q":["Triops cancriformis"]},
+ {"id":"daphnia","q":["Daphnia magna","Daphnia pulex"]},
+ {"id":"copepoda","q":["Calanus finmarchicus","Cyclops copepod","Copepoda"]},
+ {"id":"cirripedia","q":["Semibalanus balanoides","Chthamalus","Pollicipes pollicipes"]},
+ {"id":"branchiura","q":["Argulus"]},
+ {"id":"ostracoda","q":["Ostracoda"]},
+ {"id":"isopoda","q":["Armadillidium vulgare"]},
+ {"id":"amphipoda","q":["Talitrus saltator","Gammarus"]},
+ {"id":"euphausiacea","q":["Euphausia superba","Meganyctiphanes norvegica"]},
+ {"id":"decapoda","q":["Procambarus clarkii","Astacus astacus"]},
+ {"id":"chilopoda","q":["Scolopendra cingulata","Lithobius forficatus"]},
+ {"id":"diplopoda","q":["Ommatoiulus","Tachypodoiulus niger","Glomeris marginata"]},
+ {"id":"pauropoda","q":["Pauropoda"]},
+ {"id":"symphyla","q":["Symphyla","Scutigerella immaculata"]},
+ {"id":"insecta","q":["Oedipoda caerulescens","Calliptamus italicus","Locusta migratoria"]}
 ]
