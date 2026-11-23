@@ -2,8 +2,8 @@
 
 Criado por Bernardo Teles e Mariana Viegas.
 
-Aula prática em formato de apresentação: cada clique (→ ou espaço) faz aparecer o passo seguinte.
-Começa na filogenia e passa aos organismos. Cinco modelos 3D podem ser rodados, dissecados e legendados:
+Introdução curta para a aula prática (cerca de 30–40 min), antes de os alunos explorarem os animais na bancada.
+Cada clique (→ ou espaço) faz aparecer o passo seguinte. Visão geral dos grupos com fotografias reais e cinco modelos 3D que se rodam, dissecam e legendam:
 
 - **Merostomata** — *Limulus* (vista dorsal, face ventral, brânquias foliáceas, corte sagital)
 - **Arachnida** — aranha migalomorfa (morfologia externa, segmentos da pata, anatomia interna)
@@ -11,7 +11,9 @@ Começa na filogenia e passa aos organismos. Cinco modelos 3D podem ser rodados,
 - **Crustacea / Branchiopoda** — *Daphnia* (transparente; partenogénese e efípio)
 - **Insecta** — gafanhoto (externa, peças bucais, patas e asas, sistemas internos, metamorfose)
 
-Os restantes grupos (picnogónidos, escorpiões, opiliões, ácaros, classes de crustáceos, miriápodes…) aparecem como desenhos.
+Os restantes grupos aparecem com fotografias do Wikimedia Commons (licenças livres; créditos no último diapositivo e em `fotos/creditos.json`).
+Para trocar uma fotografia: mudar o nome do ficheiro em `fotos/lista.json` — a automação do GitHub (`.github/workflows/fotos.yml`) descarrega-a e regista o autor e a licença.
+Os diapositivos mais teóricos (filogenias, cutícula, muda, olho composto) continuam no código (`src/slides.js`, lista `ALL`) e podem voltar a ser incluídos.
 
 ## Utilização
 - **→ / espaço / PageDown**: avançar · **← / PageUp**: recuar (funciona com comando de apresentações)

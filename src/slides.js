@@ -1,6 +1,7 @@
 // Guião da aula: cada diapositivo tem passos; → avança um passo.
 import { ART } from './art.js';
 import { rectTree, slantTree, embed, arrow } from './diagrams.js';
+import { FOTOS } from './fotos.js';
 
 let rr = 0;
 const card = (k, title, sub, text, s, extra = '') => `<div class="card ${extra}" data-s="${s}" style="--r:${[-1.2, 0.8, -0.4, 1.1, -0.9, 0.5][rr++ % 6]}deg">${ART[k]().replace(/<text[^>]*>.*?<\/text>/g, '')}<h3>${title}<small>${sub}</small></h3><p>${text}</p></div>`;
@@ -222,7 +223,7 @@ const classBoard = (cols, strip) => `<div class="cwrap"><div class="cboard" styl
   </div>`).join('')}</div>${strip ? `<div class="strip" data-s="${strip.step}">${strip.html}</div>` : ''}</div>`;
 
 // =====================================================================
-export const SLIDES = [
+const ALL = [
   // ---------------- INTRODUÇÃO ----------------
   {
     sec: 'Introdução', title: 'Filo <em>Arthropoda</em>', sub: 'Aula prática interativa',
@@ -601,7 +602,7 @@ export const SLIDES = [
   {
     sec: 'Insecta', title: 'Metamorfose holometábola', sub: 'Exemplo: borboleta-monarca',
     html: () => holoCycle(),
-    steps: [{ n: '<b>Ovo</b>.' }, { n: '<b>Larva</b> (lagarta): come e cresce, com várias mudas.' }, { n: '<b>Pupa</b>: os tecidos larvares reorganizam-se.' }, { n: '<b>Adulto</b> (imago): reproduz-se e dispersa.' }, { n: 'Larva e adulto usam recursos diferentes: não competem (lembram-se da razão de sucesso n.º 6?).' }],
+    steps: [{ n: '<b>Ovo</b>.' }, { n: '<b>Larva</b> (lagarta): come e cresce, com várias mudas.' }, { n: '<b>Pupa</b>: os tecidos larvares reorganizam-se.' }, { n: '<b>Adulto</b> (imago): reproduz-se e dispersa.' }, { n: 'Larva e adulto usam recursos diferentes: não competem entre si.' }],
   },
   {
     sec: 'Insecta', title: 'Filogenia dos hexápodes', sub: 'Cladograma do manual',
@@ -630,4 +631,106 @@ export const SLIDES = [
     </table>`,
     steps: [{ n: 'Uma linha de cada vez: tente prever antes de avançar.' }, {}, {}, {}, {}, { n: 'Para estudar: volte aos modelos e ligue o <b>Modo teste</b> (tecla T): os nomes ficam escondidos até clicar.' }],
   },
+];
+
+
+// ---------------- versão para a aula prática (decidido com a Mariana: introdução geral curta + modelos + ciclos) ----------------
+const byTitle = (t) => { const x = ALL.find((sl) => sl.title.replace(/<[^>]+>/g, '') === t); if (!x) throw new Error('falta ' + t); return x; };
+// espécie de cada fotografia (confirmada no Commons)
+const SP = { trilobita: 'Elrathia kingii (Câmbrico)', limulus: 'Limulus polyphemus', pycnogonida: 'Nymphon maculatum', araneae: 'Araneus diadematus', scorpiones: 'Buthus ibericus', opiliones: 'Phalangium opilio', acari: 'Ixodes ricinus', cephalocarida: 'Hutchinsoniella macracantha', triops: 'Triops cancriformis', daphnia: 'Daphnia magna', copepoda: 'Cyclops sp. (fêmea com sacos ovígeros)', cirripedia: 'Chthamalus stellatus', branchiura: 'Argulus sp.', ostracoda: 'Ostracoda', isopoda: 'Armadillidium vulgare', amphipoda: 'Talitrus saltator', euphausiacea: 'Euphausia superba', decapoda: 'Astacus astacus', chilopoda: 'Scolopendra cingulata', diplopoda: 'Ommatoiulus rutilans', pauropoda: 'Pauropodidae', symphyla: 'Symphyla', insecta: 'Calliptamus italicus' };
+const sp = (id) => (FOTOS[id] && SP[id] ? `<em class="sp">${SP[id]}</em>` : '');
+const FIT = { cephalocarida: '#fff', chilopoda: '#000', diplopoda: '#f4f4f4', trilobita: '#e8e2d2' };
+const pic = (id, art) => FOTOS[id]
+  ? `<img src="fotos/${id}.jpg" ${FIT[id] ? `style="object-fit:contain;background:${FIT[id]}"` : ''} alt="" loading="lazy" title="Foto: ${(FOTOS[id].artist || '').replace(/"/g, '')} (${FOTOS[id].license}), Wikimedia Commons">`
+  : (art ? ART[art]().replace(/<text[^>]*>.*?<\/text>/g, '') : '');
+const photoBoard = (cols, strip) => `<div class="cwrap"><div class="cboard photos" style="--n:${cols.reduce((a, c) => a + (c.span || 1), 0)}">${cols.map((c) => `
+  <div class="ccol" data-now="${c.step}" style="${c.span ? `grid-column:span ${c.span}` : ''}">
+    <div class="ch2">${c.name}<small>${c.sub || ''}</small></div>
+    <div class="body" data-s="${c.step}">
+      <div class="orgs ${c.orgs.length > 1 ? 'g2' : ''}">${c.orgs.map((o) => `<div class="org">${pic(o.photo, o.art)}<span><b>${o.label}</b>${o.sub || ''}${sp(o.photo)}</span></div>`).join('')}</div>
+      <ul class="tr">${c.feats.map((f) => `<li>${f}</li>`).join('')}</ul>
+    </div>
+  </div>`).join('')}</div>${strip ? `<div class="strip" data-s="${strip.step}">${strip.html}</div>` : ''}</div>`;
+
+const P = {
+  titulo: {
+    sec: 'Introdução', title: 'Filo <em>Arthropoda</em>', sub: 'Aula prática',
+    html: () => `<div class="title-slide" style="width:100%;max-width:1000px">
+      <h2>Filo Arthropoda</h2><p style="margin-top:6px">artrópodes = "patas articuladas" (gr. <i>arthron</i>, articulação + <i>pous</i>, pé)</p>
+      <div class="cards c4 photocards" style="margin-top:22px">${[['limulus', 'limulus', 'Merostomata', 'límulo'], ['araneae', 'spider', 'Arachnida', 'aranha'], ['decapoda', 'crab', 'Crustacea', 'lagostim'], ['insecta', 'insect', 'Insecta', 'gafanhoto']].map(([f, a, t, s2]) => `<div class="card">${pic(f, a)}<h3>${t}<small>${s2}${sp(f) ? ' · ' + sp(f) : ''}</small></h3></div>`).join('')}</div>
+      <p class="boardnote" style="margin-top:22px">Criado por Bernardo Teles e Mariana Viegas</p></div>`,
+    steps: [{ n: 'Use <b>→</b> ou <b>espaço</b> para avançar e <b>←</b> para recuar. Primeiro uma visão geral dos grupos; depois observamos cada animal por fora, por dentro, os apêndices e o ciclo de vida.' }, { n: 'Nos modelos: <b>arraste</b> para rodar, <b>roda do rato</b> para aproximar, <b>passe por cima de um nome</b> para ver a descrição. O botão <b>Modo teste</b> esconde os nomes.' }],
+  },
+  subfilos: {
+    sec: 'Introdução', title: 'Os grandes grupos de artrópodes', sub: 'Corpo segmentado, exosqueleto e patas articuladas',
+    html: () => photoBoard([
+      { name: 'Trilobita †', sub: 'extintos', step: 1, orgs: [{ photo: 'trilobita', art: 'trilobite', label: 'Trilobite (fóssil)' }], feats: ['Só marinhos, desapareceram há ~250 milhões de anos', 'Corpo com 3 lobos'] },
+      { name: 'Chelicerata', sub: 'quelicerados', step: 2, orgs: [{ photo: 'araneae', art: 'spider', label: 'Aranha' }], feats: ['Quelíceras; sem antenas', '4 pares de patas', 'Prossoma + opistossoma'] },
+      { name: 'Crustacea', sub: 'crustáceos', step: 3, orgs: [{ photo: 'decapoda', art: 'crab', label: 'Lagostim' }], feats: ['2 pares de antenas', 'Quase todos aquáticos; brânquias'] },
+      { name: 'Myriapoda', sub: 'miriápodes', step: 4, orgs: [{ photo: 'chilopoda', art: 'centipede', label: 'Centopeia' }], feats: ['1 par de antenas', 'Muitos segmentos com patas'] },
+      { name: 'Insecta', sub: 'insetos', step: 5, orgs: [{ photo: 'insecta', art: 'insect', label: 'Gafanhoto' }], feats: ['1 par de antenas', '3 pares de patas; muitos com asas'] },
+    ], { step: 6, html: 'No manual, miriápodes e insetos juntam-se nos <b>Uniramia</b>. Hoje sabe-se que os insetos são parentes próximos dos crustáceos.' }),
+    steps: [{ n: 'Todos têm <b>exosqueleto</b> (que trocam por <b>muda</b> para crescer), corpo <b>segmentado</b> e <b>patas articuladas</b>.' }, { n: '<b>Trilobita</b>: só os conhecemos como fósseis.' }, { n: '<b>Chelicerata</b>: aranhas, escorpiões, ácaros, límulos…' }, { n: '<b>Crustacea</b>: caranguejos, camarões, pulgas-de-água…' }, { n: '<b>Myriapoda</b>: centopeias e milípedes.' }, { n: '<b>Insecta</b>: o grupo com mais espécies de todos os animais.' }, {}],
+  },
+  chelicerata: {
+    sec: 'Chelicerata', title: 'Quelicerados', sub: 'Três classes',
+    html: () => photoBoard([
+      { name: 'Pycnogonida', sub: 'aranhas-do-mar', step: 1, orgs: [{ photo: 'pycnogonida', art: 'pycnogonid', label: 'Picnogónido' }], feats: ['Marinhos', 'Tronco fino; patas compridas', 'Probóscide'] },
+      { name: 'Merostomata', sub: 'límulos', step: 2, orgs: [{ photo: 'limulus', art: 'limulus', label: '<i>Limulus</i>' }], feats: ['Marinhos; só 4 espécies atuais', 'Carapaça em ferradura e télson'] },
+      { name: 'Arachnida', sub: 'aracnídeos', step: 3, span: 2, orgs: [{ photo: 'araneae', art: 'spider', label: 'Araneae', sub: 'aranhas' }, { photo: 'scorpiones', art: 'scorpion', label: 'Scorpiones', sub: 'escorpiões' }, { photo: 'opiliones', art: 'harvestman', label: 'Opiliones', sub: 'opiliões' }, { photo: 'acari', art: 'mite', label: 'Acari', sub: 'ácaros e carraças' }], feats: ['Quase todos terrestres', 'Respiram por pulmões foliáceos e/ou traqueias'] },
+    ]),
+    steps: [{ n: 'Os quelicerados dividem-se em <b>três classes</b>.' }, { n: '<b>Pycnogonida</b>: o corpo é quase só patas.' }, { n: '<b>Merostomata</b>: o límulo — vamos observá-lo a seguir.' }, { n: '<b>Arachnida</b>: várias ordens com formas de corpo diferentes. Depois do límulo, observamos uma <b>aranha</b>.' }],
+  },
+  crustacea: {
+    sec: 'Crustacea', title: 'Crustáceos', sub: 'As cinco classes do manual',
+    html: () => photoBoard([
+      { name: 'Remipedia', sub: 'remípedes', step: 1, orgs: [{ photo: 'remipedia', art: 'remipede', label: 'Remípede' }], feats: ['Grutas marinhas; cegos', 'Muitos segmentos iguais'] },
+      { name: 'Cephalocarida', sub: 'cefalocarídeos', step: 2, orgs: [{ photo: 'cephalocarida', art: 'cephalocarid', label: 'Cefalocarídeo' }], feats: ['Minúsculos, em sedimentos marinhos'] },
+      { name: 'Branchiopoda', sub: 'branquiópodes', step: 3, orgs: [{ photo: 'triops', art: 'triops', label: '<i>Triops</i>' }, { photo: 'daphnia', art: 'daphnia', label: '<i>Daphnia</i>' }], feats: ['Patas foliáceas', 'Sobretudo água doce'] },
+      { name: 'Maxillopoda', sub: 'grupo diverso', step: 4, orgs: [{ photo: 'copepoda', art: 'copepod', label: 'Copepoda' }, { photo: 'cirripedia', art: 'barnacle', label: 'Cirripedia', sub: 'cracas' }, { photo: 'branchiura', art: 'argulus', label: 'Branchiura' }, { photo: 'ostracoda', art: 'ostracod', label: 'Ostracoda' }], feats: ['Pequenos; abdómen reduzido'] },
+      { name: 'Malacostraca', sub: 'a maior classe', step: 5, orgs: [{ photo: 'isopoda', art: 'isopod', label: 'Isopoda', sub: 'bichos-de-conta' }, { photo: 'amphipoda', art: 'amphipod', label: 'Amphipoda', sub: 'pulgas-da-areia' }, { photo: 'euphausiacea', art: 'krill', label: 'Euphausiacea', sub: 'krill' }, { photo: 'decapoda', art: 'crab', label: 'Decapoda', sub: 'lagostins…' }], feats: ['Tórax com 8 segmentos, abdómen com 6'] },
+    ]),
+    steps: [{ n: 'O manual divide os crustáceos em <b>cinco classes</b>.' }, { n: '<b>Remipedia</b>' }, { n: '<b>Cephalocarida</b>' }, { n: '<b>Branchiopoda</b>: a <i>Daphnia</i> é um deles.' }, { n: '<b>Maxillopoda</b>: copépodes, cracas, Branchiura, ostracodes.' }, { n: '<b>Malacostraca</b>: inclui o <b>lagostim</b>, que vamos observar.' }],
+  },
+  miriapodes: {
+    sec: 'Myriapoda', title: 'Miriápodes', sub: 'Conte as patas por segmento',
+    html: () => photoBoard([
+      { name: 'Chilopoda', sub: 'centopeias', step: 1, orgs: [{ photo: 'chilopoda', art: 'centipede', label: 'Centopeia' }], feats: ['1 par de patas por segmento', 'Forcípulas venenosas; predadores'] },
+      { name: 'Diplopoda', sub: 'milípedes, maria-café', step: 2, orgs: [{ photo: 'diplopoda', art: 'millipede', label: 'Milípede' }], feats: ['2 pares de patas por segmento', 'Detritívoros'] },
+      { name: 'Pauropoda', sub: 'paurópodes', step: 3, orgs: [{ photo: 'pauropoda', art: 'pauropod', label: 'Paurópode' }], feats: ['Antenas ramificadas', '< 2 mm, no solo'] },
+      { name: 'Symphyla', sub: 'sínfilos', step: 4, orgs: [{ photo: 'symphyla', art: 'symphylan', label: 'Sínfilo' }], feats: ['12 pares de patas', 'No solo'] },
+    ]),
+    steps: [{ n: 'Para distinguir os miriápodes, conte <b>quantos pares de patas há por segmento</b>.' }, { n: '<b>Chilopoda</b>' }, { n: '<b>Diplopoda</b>' }, { n: '<b>Pauropoda</b>' }, { n: '<b>Symphyla</b>' }],
+  },
+  insecta: {
+    sec: 'Insecta', title: 'Insetos', sub: 'Classe Insecta',
+    html: () => `<div class="twocol"><div class="card bigphoto">${pic('insecta', 'insect')}<h3>Gafanhoto<small>Orthoptera · ${sp('insecta')}</small></h3></div><div class="reasons" style="grid-template-columns:1fr">${[
+      ['3 tagmas', 'Cabeça, tórax e abdómen.'],
+      ['3 pares de patas, 1 par de antenas', 'As patas estão todas no tórax.'],
+      ['Asas', 'Geralmente 2 pares, no tórax.'],
+    ].map(([h, p], i) => `<div class="reason" data-s="${i}"><h3>${h}</h3><p>${p}</p></div>`).join('')}</div></div>`,
+    steps: [{ n: 'Cerca de 1 milhão de espécies descritas.' }, {}, { n: 'Vamos observar um <b>gafanhoto</b>.' }],
+  },
+  bancada: {
+    sec: 'Na bancada', title: 'Na bancada: como identificar', sub: 'Para usar com os animais da aula',
+    html: () => byTitle('Quadro-resumo').html(),
+    steps: byTitle('Quadro-resumo').steps.map((s2, i) => (i === 0 ? { n: 'Use esta tabela para identificar os animais na bancada.' } : i === 5 ? { n: 'Pode voltar a qualquer modelo pelo <b>Índice</b> (tecla I) e usar o <b>Modo teste</b> (tecla T).' } : {})),
+  },
+  creditos: {
+    sec: 'Na bancada', title: 'Créditos das fotografias', sub: 'Wikimedia Commons',
+    html: () => `<div class="credits">${Object.entries(FOTOS).map(([id, c]) => `<div><img src="fotos/${id}.jpg" alt=""><span><b><i>${SP[id] || id}</i></b>${c.artist || 'autor desconhecido'} · ${c.license} · <a href="${c.source}" style="color:inherit">Commons</a></span></div>`).join('') || '<p>Sem fotografias.</p>'}<div><span><b>Remipedia</b>desenho esquemático (não há fotografias livres com qualidade suficiente)</span></div></div>`,
+    steps: [{ n: 'Fotografias com licenças livres (Creative Commons ou domínio público), via Wikimedia Commons. Criado por Bernardo Teles e Mariana Viegas.' }],
+  },
+};
+
+export const SLIDES = [
+  P.titulo, P.subfilos,
+  P.chelicerata, byTitle('Limulus — morfologia externa'), byTitle('Limulus — face ventral e apêndices'), byTitle('Limulus — anatomia interna'),
+  byTitle('Aranha — morfologia externa'), byTitle('Aranha — apêndices'), byTitle('Aranha — anatomia interna'),
+  P.crustacea, byTitle('Lagostim — morfologia externa'), byTitle('Lagostim — os 19 pares de apêndices'), byTitle('Lagostim — anatomia interna'), byTitle('Lagostim — corte transversal'), byTitle('Ciclo de vida de um decápode'),
+  byTitle('Daphnia — morfologia externa'), byTitle('Daphnia — por dentro e reprodução'),
+  P.miriapodes,
+  P.insecta, byTitle('Gafanhoto — morfologia externa'), byTitle('Gafanhoto — peças bucais'), byTitle('Gafanhoto — patas e asas'), byTitle('Gafanhoto — anatomia interna'),
+  byTitle('Metamorfose hemimetábola'), byTitle('Metamorfose holometábola'),
+  P.bancada, P.creditos,
 ];

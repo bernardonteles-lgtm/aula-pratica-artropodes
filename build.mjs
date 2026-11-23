@@ -1,5 +1,12 @@
 import { build } from 'esbuild';
-import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+
+// créditos das fotografias (gerados pela automação do GitHub) → src/fotos.js
+const cred = existsSync('fotos/creditos.json') ? JSON.parse(readFileSync('fotos/creditos.json', 'utf8')) : {};
+const fixArtist = { euphausiacea: 'Uwe Kils', amphipoda: 'Arnold Paul (editado por Waugsberg)' };
+for (const [id, a] of Object.entries(fixArtist)) if (cred[id]) cred[id].artist = a;
+const ok = Object.fromEntries(Object.entries(cred).filter(([id]) => existsSync(`fotos/${id}.jpg`)));
+writeFileSync('src/fotos.js', `export const FOTOS = ${JSON.stringify(ok)};\n`);
 
 const r = await build({ entryPoints: ['src/main.js'], bundle: true, minify: !process.env.DEV, format: 'iife', write: false, target: 'es2020', legalComments: 'none' });
 const js = r.outputFiles[0].text;
