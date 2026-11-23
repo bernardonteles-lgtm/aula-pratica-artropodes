@@ -136,5 +136,53 @@
   "license": "CC BY-SA 3.0",
   "artist": "Kulac",
   "source": "https://commons.wikimedia.org/wiki/File:Calliptamus_italicus03.jpg"
+ },
+ "remipedia": {
+  "title": "File:Speleonectes tulumensis (10.7717-peerj.2305) Figure 1 (cropped).png",
+  "license": "CC BY 4.0",
+  "artist": "Ivanenko VN, Antonenko EA, Gelfand MS, Yager J, Ferrari FD. 2016. Changes in segmentation and setation along the anterio",
+  "source": "https://commons.wikimedia.org/wiki/File:Speleonectes_tulumensis_(10.7717-peerj.2305)_Figure_1_(cropped).png"
+ },
+ "nauplio": {
+  "title": "File:Nauplius larva of a cyclops copepod.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Lithium57",
+  "source": "https://commons.wikimedia.org/wiki/File:Nauplius_larva_of_a_cyclops_copepod.jpg"
+ },
+ "misis": {
+  "title": "File:Homarus americanus (YPM IZ 098715).jpeg",
+  "license": "CC0",
+  "artist": "Sikander Kiani",
+  "source": "https://commons.wikimedia.org/wiki/File:Homarus_americanus_(YPM_IZ_098715).jpeg"
+ },
+ "camarao": {
+  "title": "File:Penaeus kerathurus 144319882.jpg",
+  "license": "CC BY 4.0",
+  "artist": "Julien Renoult",
+  "source": "https://commons.wikimedia.org/wiki/File:Penaeus_kerathurus_144319882.jpg"
+ },
+ "monarca_ovo": {
+  "title": "File:Monarch butterfly egg on a milkweed leaf (42970347980).jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "Lorie Shaull from St Paul, United States",
+  "source": "https://commons.wikimedia.org/wiki/File:Monarch_butterfly_egg_on_a_milkweed_leaf_(42970347980).jpg"
+ },
+ "monarca_larva": {
+  "title": "File:Monarch caterpillar (23229).jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Rhododendrites",
+  "source": "https://commons.wikimedia.org/wiki/File:Monarch_caterpillar_(23229).jpg"
+ },
+ "monarca_pupa": {
+  "title": "File:Monarch (Danaus plexippus) Chrysalis (20976505208).jpg",
+  "license": "CC BY 2.0",
+  "artist": "Andrew C",
+  "source": "https://commons.wikimedia.org/wiki/File:Monarch_(Danaus_plexippus)_Chrysalis_(20976505208).jpg"
+ },
+ "monarca_adulto": {
+  "title": "File:Monarch butterfly in BBG (84685).jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Rhododendrites",
+  "source": "https://commons.wikimedia.org/wiki/File:Monarch_butterfly_in_BBG_(84685).jpg"
  }
 }
