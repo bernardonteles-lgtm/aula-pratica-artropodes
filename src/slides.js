@@ -637,9 +637,9 @@ const ALL = [
 // ---------------- versão para a aula prática (decidido com a Mariana: introdução geral curta + modelos + ciclos) ----------------
 const byTitle = (t) => { const x = ALL.find((sl) => sl.title.replace(/<[^>]+>/g, '') === t); if (!x) throw new Error('falta ' + t); return x; };
 // espécie de cada fotografia (confirmada no Commons)
-const SP = { trilobita: 'Elrathia kingii (Câmbrico)', limulus: 'Limulus polyphemus', pycnogonida: 'Nymphon maculatum', araneae: 'Araneus diadematus', scorpiones: 'Buthus ibericus', opiliones: 'Phalangium opilio', acari: 'Ixodes ricinus', cephalocarida: 'Hutchinsoniella macracantha', triops: 'Triops cancriformis', daphnia: 'Daphnia magna', copepoda: 'Cyclops sp. (fêmea com sacos ovígeros)', cirripedia: 'Chthamalus stellatus', branchiura: 'Argulus sp.', ostracoda: 'Ostracoda', isopoda: 'Armadillidium vulgare', amphipoda: 'Talitrus saltator', euphausiacea: 'Euphausia superba', decapoda: 'Astacus astacus', chilopoda: 'Scolopendra cingulata', diplopoda: 'Ommatoiulus rutilans', pauropoda: 'Pauropodidae', symphyla: 'Symphyla', insecta: 'Calliptamus italicus' };
+const SP = { trilobita: 'Elrathia kingii (Câmbrico)', limulus: 'Limulus polyphemus', pycnogonida: 'Nymphon maculatum', araneae: 'Araneus diadematus', scorpiones: 'Buthus ibericus', opiliones: 'Phalangium opilio', acari: 'Ixodes ricinus', cephalocarida: 'Hutchinsoniella macracantha', triops: 'Triops cancriformis', daphnia: 'Daphnia magna', copepoda: 'Cyclops sp. (fêmea com sacos ovígeros)', cirripedia: 'Chthamalus stellatus', branchiura: 'Argulus sp.', ostracoda: 'Ostracoda', isopoda: 'Armadillidium vulgare', amphipoda: 'Talitrus saltator', euphausiacea: 'Euphausia superba', decapoda: 'Astacus astacus', chilopoda: 'Scolopendra cingulata', diplopoda: 'Ommatoiulus rutilans', pauropoda: 'Pauropodidae', symphyla: 'Symphyla', insecta: 'Calliptamus italicus', remipedia: 'Speleonectes tulumensis', nauplio: 'náuplio de copépode (Cyclops)', protozoe: 'zoé de Lysmata amboinensis', misis: 'larva de Homarus americanus', camarao: 'Penaeus kerathurus', monarca_ovo: 'Danaus plexippus — ovo', monarca_larva: 'Danaus plexippus — lagarta', monarca_pupa: 'Danaus plexippus — crisálida', monarca_adulto: 'Danaus plexippus — adulto' };
 const sp = (id) => (FOTOS[id] && SP[id] ? `<em class="sp">${SP[id]}</em>` : '');
-const FIT = { cephalocarida: '#fff', chilopoda: '#000', diplopoda: '#f4f4f4', trilobita: '#e8e2d2' };
+const FIT = { remipedia: '#fff', cephalocarida: '#fff', chilopoda: '#000', diplopoda: '#f4f4f4', trilobita: '#e8e2d2' };
 const pic = (id, art) => FOTOS[id]
   ? `<img src="fotos/${id}.jpg" ${FIT[id] ? `style="object-fit:contain;background:${FIT[id]}"` : ''} alt="" title="Foto: ${(FOTOS[id].artist || '').replace(/"/g, '')} (${FOTOS[id].license}), Wikimedia Commons">`
   : (art ? ART[art]().replace(/<text[^>]*>.*?<\/text>/g, '') : '');
@@ -651,6 +651,27 @@ const photoBoard = (cols, strip) => `<div class="cwrap"><div class="cboard photo
       <ul class="tr">${c.feats.map((f) => `<li>${f}</li>`).join('')}</ul>
     </div>
   </div>`).join('')}</div>${strip ? `<div class="strip" data-s="${strip.step}">${strip.html}</div>` : ''}</div>`;
+
+
+const photoCycle = (stages, cx, cy, R, rx, note) => {
+  let s = '';
+  stages.forEach(([id, art, name, step], j) => {
+    const a = -Math.PI / 2 + (j / stages.length) * Math.PI * 2;
+    const x = cx + Math.cos(a) * rx, y = cy + Math.sin(a) * R;
+    const w = 270, h = 180;
+    const img = FOTOS[id]
+      ? `<image href="fotos/${id}.jpg" x="${x - w / 2 + 4}" y="${y - h / 2 + 4}" width="${w - 8}" height="${h - 8}" preserveAspectRatio="xMidYMid slice"/>`
+      : `<svg x="${x - w / 2 + 4}" y="${y - h / 2 + 4}" width="${w - 8}" height="${h - 8}" viewBox="0 0 200 120">${ART[art]().replace(/^<svg[^>]*>|<\/svg>$/g, '').replace(/<text[^>]*>.*?<\/text>/g, '')}</svg>`;
+    s += `<g data-s="${step}"><rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="8" fill="#f4eedd"/>${img}`;
+    s += `<text x="${x}" y="${y + h / 2 + 22}" text-anchor="middle" class="lbl2 hand" font-size="24">${name}</text>`;
+    if (SP[id] && FOTOS[id]) s += `<text x="${x}" y="${y + h / 2 + 40}" text-anchor="middle" class="small" font-size="14" font-style="italic">${SP[id]}</text>`;
+    s += '</g>';
+    const a2 = -Math.PI / 2 + ((j + 1) / stages.length) * Math.PI * 2;
+    s += `<g data-s="${stages[(j + 1) % stages.length][3] || stages.length}">${arrow(cx + Math.cos(a + 0.42) * rx * 0.86, cy + Math.sin(a + 0.42) * R * 0.86, cx + Math.cos(a2 - 0.42) * rx * 0.86, cy + Math.sin(a2 - 0.42) * R * 0.86)}</g>`;
+  });
+  if (note) s += note;
+  return S(s, '0 0 1000 660');
+};
 
 const P = {
   titulo: {
@@ -711,6 +732,24 @@ const P = {
     ].map(([h, p], i) => `<div class="reason" data-s="${i}"><h3>${h}</h3><p>${p}</p></div>`).join('')}</div></div>`,
     steps: [{ n: 'Cerca de 1 milhão de espécies descritas.' }, {}, { n: 'Vamos observar um <b>gafanhoto</b>.' }],
   },
+  cicloCamarao: {
+    sec: 'Crustacea', title: 'Ciclo de vida de um decápode', sub: 'Camarão peneídeo (desenvolvimento indireto)',
+    html: () => photoCycle([['camarao', 'shrimp', 'Adulto', 0], ['nauplio', 'nauplius', 'Náuplio', 1], ['protozoe', 'zoea', 'Protozoé (zoé)', 2], ['misis', 'mysis', 'Mísis', 3]], 500, 318, 205, 330,
+      `<g data-s="1"><text x="500" y="310" text-anchor="middle" class="small" font-size="14">larvas planctónicas;</text><text x="500" y="312" text-anchor="middle" class="small" font-size="14">várias mudas em cada fase</text></g>`.replace('y="312"', 'y="330"')),
+    steps: [
+      { n: 'Nos camarões peneídeos (como o <i>Penaeus kerathurus</i>, o camarão da costa portuguesa) o desenvolvimento é <b>indireto</b>: os ovos são libertados na água.' },
+      { n: 'Do ovo sai um <b>náuplio</b>: 3 pares de apêndices e um olho mediano; vive das reservas do ovo. <i>Foto: náuplio de copépode — o dos peneídeos tem o mesmo plano.</i>' },
+      { n: '<b>Protozoé</b> (nos outros decápodes chama-se <b>zoé</b>): olhos compostos, começa a alimentar-se no plâncton. <i>Foto: zoé de outro camarão (Lysmata).</i>' },
+      { n: '<b>Mísis</b>: já com patas torácicas birramosas para nadar. <i>Foto: larva de lavagante na mesma fase.</i> Depois vem a pós-larva, o juvenil e o adulto.' },
+      { n: '⚠ O <b>lagostim-de-água-doce</b> tem desenvolvimento <b>direto</b>: a fêmea transporta os ovos nos pleópodes e saem juvenis já com forma de adulto.' },
+    ],
+  },
+  cicloMonarca: {
+    sec: 'Insecta', title: 'Metamorfose holometábola', sub: 'Borboleta-monarca (<i>Danaus plexippus</i>)',
+    html: () => photoCycle([['monarca_ovo', 'egg', 'Ovo', 0], ['monarca_larva', 'caterpillar', 'Larva (lagarta)', 1], ['monarca_pupa', 'pupa', 'Pupa (crisálida)', 2], ['monarca_adulto', 'butterfly', 'Adulto (imago)', 3]], 500, 318, 205, 330,
+      `<g data-s="4"><text x="500" y="310" text-anchor="middle" class="small" font-size="14">larva e adulto não competem:</text><text x="500" y="302" text-anchor="middle" class="small" font-size="14">folhas vs. néctar</text></g>`.replace('y="302"', 'y="330"')),
+    steps: [{ n: '<b>Ovo</b>, posto numa folha de asclépia (a planta de que a lagarta se alimenta).' }, { n: '<b>Larva</b> (lagarta): come e cresce, com várias mudas.' }, { n: '<b>Pupa</b>: os tecidos larvares reorganizam-se; as asas formam-se por dentro.' }, { n: '<b>Adulto</b> (imago): reproduz-se e dispersa.' }, { n: 'Compare com o gafanhoto (hemimetábolo): ninfas parecidas com o adulto e <b>sem pupa</b>.' }],
+  },
   bancada: {
     sec: 'Na bancada', title: 'Na bancada: como identificar', sub: 'Para usar com os animais da aula',
     html: () => byTitle('Quadro-resumo').html(),
@@ -718,7 +757,7 @@ const P = {
   },
   creditos: {
     sec: 'Na bancada', title: 'Créditos das fotografias', sub: 'Wikimedia Commons',
-    html: () => `<div class="credits">${Object.entries(FOTOS).map(([id, c]) => `<div><img src="fotos/${id}.jpg" alt=""><span><b><i>${SP[id] || id}</i></b>${c.artist || 'autor desconhecido'} · ${c.license} · <a href="${c.source}" style="color:inherit">Commons</a></span></div>`).join('') || '<p>Sem fotografias.</p>'}<div><span><b>Remipedia</b>desenho esquemático (não há fotografias livres com qualidade suficiente)</span></div></div>`,
+    html: () => `<div class="credits">${Object.entries(FOTOS).map(([id, c]) => `<div><img src="fotos/${id}.jpg" alt=""><span><b><i>${SP[id] || id}</i></b>${c.artist || 'autor desconhecido'} · ${c.license} · <a href="${c.source}" style="color:inherit">Commons</a></span></div>`).join('') || '<p>Sem fotografias.</p>'}</div>`,
     steps: [{ n: 'Fotografias com licenças livres (Creative Commons ou domínio público), via Wikimedia Commons. Criado por Bernardo Teles e Mariana Viegas.' }],
   },
 };
@@ -727,10 +766,10 @@ export const SLIDES = [
   P.titulo, P.subfilos,
   P.chelicerata, byTitle('Limulus — morfologia externa'), byTitle('Limulus — face ventral e apêndices'), byTitle('Limulus — anatomia interna'),
   byTitle('Aranha — morfologia externa'), byTitle('Aranha — apêndices'), byTitle('Aranha — anatomia interna'),
-  P.crustacea, byTitle('Lagostim — morfologia externa'), byTitle('Lagostim — os 19 pares de apêndices'), byTitle('Lagostim — anatomia interna'), byTitle('Lagostim — corte transversal'), byTitle('Ciclo de vida de um decápode'),
+  P.crustacea, byTitle('Lagostim — morfologia externa'), byTitle('Lagostim — os 19 pares de apêndices'), byTitle('Lagostim — anatomia interna'), byTitle('Lagostim — corte transversal'), P.cicloCamarao,
   byTitle('Daphnia — morfologia externa'), byTitle('Daphnia — por dentro e reprodução'),
   P.miriapodes,
   P.insecta, byTitle('Gafanhoto — morfologia externa'), byTitle('Gafanhoto — peças bucais'), byTitle('Gafanhoto — patas e asas'), byTitle('Gafanhoto — anatomia interna'),
-  byTitle('Metamorfose hemimetábola'), byTitle('Metamorfose holometábola'),
+  byTitle('Metamorfose hemimetábola'), P.cicloMonarca,
   P.bancada, P.creditos,
 ];

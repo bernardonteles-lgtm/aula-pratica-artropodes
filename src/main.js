@@ -55,6 +55,11 @@ function renderPanel(slide, k, fresh) {
     for (let i = have; i < want.length; i++) { const d = document.createElement('div'); d.className = 'note new'; d.innerHTML = want[i]; notes.appendChild(d); }
   }
   [...notes.children].forEach((d, i) => d.classList.toggle('cur', i === want.length - 1 && !!slide.steps[k].n));
+  // só compactar as notas anteriores se não couberem no painel
+  const panel = $('#panel');
+  panel.classList.remove('tight', 'tighter');
+  if (panel.scrollHeight > panel.clientHeight + 2) panel.classList.add('tight');
+  if (panel.scrollHeight > panel.clientHeight + 2) panel.classList.add('tighter');
   const last = notes.lastElementChild;
   if (last) last.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   // legenda de sistemas

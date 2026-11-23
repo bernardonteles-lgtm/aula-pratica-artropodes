@@ -221,4 +221,5 @@ ul.tr li::marker{color:var(--yellow)}
 .card small .sp{display:inline}
 
 /* notas anteriores compactas: o painel não precisa de scroll */
-.note:not(.cur){font-size:13px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tight .note:not(.cur){font-size:13px;line-height:1.35}
+.tighter .note:not(.cur){display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
