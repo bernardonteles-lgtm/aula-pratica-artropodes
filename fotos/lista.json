@@ -96,90 +96,27 @@
   "file": "Speleonectes tulumensis (10.7717-peerj.2305) Figure 1 (cropped).png"
  },
  {
-  "id": "nauplio",
-  "keep": "Nauplius larva of a cyclops copepod.jpg",
-  "q": [
-   "Penaeus nauplius",
-   "Litopenaeus vannamei nauplius",
-   "penaeid nauplius",
-   "Penaeidae larva nauplius",
-   "shrimp larvae nauplius microscope"
-  ],
-  "refresh": true
- },
- {
-  "id": "protozoe",
-  "keep": "Lysmata amboinensis zoea 1.jpg",
-  "q": [
-   "Penaeus protozoea",
-   "Litopenaeus vannamei protozoea",
-   "protozoea",
-   "penaeid zoea",
-   "Penaeus monodon larva"
-  ],
-  "refresh": true
- },
- {
-  "id": "misis",
-  "keep": "Homarus americanus (YPM IZ 098715).jpeg",
-  "q": [
-   "Penaeus mysis",
-   "Litopenaeus vannamei mysis",
-   "penaeid mysis",
-   "shrimp mysis larva",
-   "Penaeus postlarva"
-  ],
-  "refresh": true
- },
- {
   "id": "camarao",
-  "keep": "Penaeus kerathurus 144319882.jpg",
-  "q": [
-   "Penaeus kerathurus",
-   "Melicertus kerathurus",
-   "Penaeus specimen museum",
-   "Penaeus MHNT"
-  ],
-  "refresh": true
+  "file": "Caramote (Penaus kerathurus) (Ifremer 00674-78585 - 31535).jpg"
  },
  {
   "id": "monarca_ovo",
-  "keep": "Monarch butterfly egg on a milkweed leaf (42970347980).jpg",
-  "q": [
-   "Danaus plexippus egg microscope",
-   "monarch egg SEM",
-   "monarch butterfly egg macro"
-  ],
-  "refresh": true
+  "file": "Monarch butterfly egg on a milkweed leaf (42970347980).jpg"
  },
  {
   "id": "monarca_larva",
-  "keep": "Monarch caterpillar (23229).jpg",
-  "q": [
-   "Danaus plexippus instar",
-   "monarch caterpillar instars",
-   "Danaus plexippus larva"
-  ],
-  "refresh": true
+  "file": "Monarch (Danaus plexippus), Larva (37734052396).jpg"
  },
  {
   "id": "monarca_pupa",
-  "keep": "Monarch (Danaus plexippus) Chrysalis (20976505208).jpg",
-  "q": [
-   "Danaus plexippus pupa",
-   "Danaus plexippus chrysalis MHNT",
-   "monarch chrysalis"
-  ],
-  "refresh": true
+  "file": "Monarch (Danaus plexippus) Chrysalis (20976505208).jpg"
  },
  {
   "id": "monarca_adulto",
-  "keep": "Monarch butterfly in BBG (84685).jpg",
-  "q": [
-   "Danaus plexippus MHNT",
-   "Danaus plexippus specimen",
-   "Danaus plexippus"
-  ],
-  "refresh": true
+  "file": "Danaus plexippus MHNT dos.jpg"
+ },
+ {
+  "id": "penaeus_larvas",
+  "file": "FMIB 46408 Larval Stages of the Prawn -- Penaeus.jpeg"
  }
 ]
