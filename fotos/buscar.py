@@ -82,6 +82,14 @@ def inat_cands(name, stage=None, n=8):
 for it in lista:
     tid = it['id']
     try:
+        if it.get('filepath'):
+            if tid in cred and os.path.exists(f'fotos/{tid}.jpg') and os.path.getsize(f'fotos/{tid}.jpg') > 0:
+                continue
+            u = 'https://commons.wikimedia.org/wiki/Special:FilePath/' + urllib.parse.quote(it['filepath']) + '?width=1200'
+            data = fetch(u)
+            open(f'fotos/{tid}.jpg', 'wb').write(data)
+            cred[tid] = {k: it[k] for k in ('title', 'license', 'artist', 'source')}
+            continue
         if it.get('url'):
             if tid in cred and cred[tid].get('source') == it['source'] and os.path.exists(f'fotos/{tid}.jpg'):
                 continue
