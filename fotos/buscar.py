@@ -35,7 +35,7 @@ def info(pages):
         md = ii.get('extmetadata', {})
         cats = clean(md.get('Categories', {}).get('value', ''))
         out.append({
-            'title': p.get('title'), 'thumb': ii.get('thumburl'), 'w': ii.get('width', 0), 'h': ii.get('height', 0), 'mime': ii.get('mime', ''),
+            'title': p.get('title'), 'thumb': ii.get('thumburl'), 'orig': ii.get('url'), 'w': ii.get('width', 0), 'h': ii.get('height', 0), 'mime': ii.get('mime', ''),
             'license': clean(md.get('LicenseShortName', {}).get('value', '')),
             'artist': clean(md.get('Artist', {}).get('value', ''))[:120],
             'source': ii.get('descriptionurl'),
@@ -94,7 +94,11 @@ for it in lista:
                 continue
             r = get({'action': 'query', 'prop': 'imageinfo', 'iiprop': 'url|extmetadata|size|mime', 'iiurlwidth': 960, 'titles': 'File:' + it['file']})
             x = info(list(r['query']['pages'].values()))[0]
-            open(f'fotos/{tid}.jpg', 'wb').write(fetch(x['thumb']))
+            try:
+                data = fetch(x['thumb'], tries=2)
+            except Exception:
+                data = fetch(x['orig'])  # algumas miniaturas são recusadas: usar o original
+            open(f'fotos/{tid}.jpg', 'wb').write(data)
             cred[tid] = {k: x[k] for k in ('title', 'license', 'artist', 'source')}
             time.sleep(2)
             continue
