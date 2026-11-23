@@ -93,103 +93,38 @@
  },
  {
   "id": "remipedia",
-  "q": [
-   "Speleonectes tulumensis",
-   "Xibalbanus tulumensis",
-   "Remipede",
-   "Speleonectes"
-  ],
-  "inat": [
-   "Remipedia"
-  ],
-  "refresh": true
+  "file": "Speleonectes tulumensis (10.7717-peerj.2305) Figure 1 (cropped).png"
  },
  {
   "id": "nauplio",
-  "q": [
-   "nauplius larva",
-   "Penaeus nauplius",
-   "shrimp nauplius",
-   "nauplius"
-  ],
-  "refresh": true
+  "file": "Nauplius larva of a cyclops copepod.jpg"
  },
  {
   "id": "protozoe",
-  "q": [
-   "protozoea larva",
-   "Penaeus protozoea",
-   "zoea larva"
-  ],
-  "refresh": true
+  "file": "Lysmata amboinensis zoea 1.jpg"
  },
  {
   "id": "misis",
-  "q": [
-   "mysis larva shrimp",
-   "Penaeus mysis",
-   "mysis stage"
-  ],
-  "refresh": true
+  "file": "Homarus americanus (YPM IZ 098715).jpeg"
  },
  {
   "id": "camarao",
-  "q": [
-   "Penaeus kerathurus",
-   "Penaeus monodon",
-   "Litopenaeus vannamei"
-  ],
-  "inat": [
-   "Penaeus kerathurus",
-   "Penaeus"
-  ],
-  "refresh": true
+  "file": "Penaeus kerathurus 144319882.jpg"
  },
  {
   "id": "monarca_ovo",
-  "q": [
-   "Danaus plexippus egg",
-   "monarch butterfly egg"
-  ],
-  "inat": [
-   "Danaus plexippus"
-  ],
-  "stage": "ovo",
-  "refresh": true
+  "file": "Monarch butterfly egg on a milkweed leaf (42970347980).jpg"
  },
  {
   "id": "monarca_larva",
-  "q": [
-   "Danaus plexippus caterpillar",
-   "monarch caterpillar"
-  ],
-  "inat": [
-   "Danaus plexippus"
-  ],
-  "stage": "larva",
-  "refresh": true
+  "file": "Monarch caterpillar (23229).jpg"
  },
  {
   "id": "monarca_pupa",
-  "q": [
-   "Danaus plexippus chrysalis",
-   "monarch chrysalis"
-  ],
-  "inat": [
-   "Danaus plexippus"
-  ],
-  "stage": "pupa",
-  "refresh": true
+  "file": "Monarch (Danaus plexippus) Chrysalis (20976505208).jpg"
  },
  {
   "id": "monarca_adulto",
-  "q": [
-   "Danaus plexippus"
-  ],
-  "inat": [
-   "Danaus plexippus"
-  ],
-  "stage": "adulto",
-  "refresh": true
+  "file": "Monarch butterfly in BBG (84685).jpg"
  }
 ]
