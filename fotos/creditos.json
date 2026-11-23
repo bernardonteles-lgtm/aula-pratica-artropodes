@@ -1,0 +1,50 @@
+{
+ "trilobita": {
+  "title": "File:Elrathia kingii (fossil trilobites).jpg",
+  "license": "CC BY 2.0",
+  "artist": "James St. John",
+  "source": "https://commons.wikimedia.org/wiki/File:Elrathia_kingii_(fossil_trilobites).jpg"
+ },
+ "limulus": {
+  "title": "File:Limulus polyphemus (aq.).jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Hans Hillewaert",
+  "source": "https://commons.wikimedia.org/wiki/File:Limulus_polyphemus_(aq.).jpg"
+ },
+ "pycnogonida": {
+  "title": "File:Sea spider tattoo.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "LeónHormiga",
+  "source": "https://commons.wikimedia.org/wiki/File:Sea_spider_tattoo.jpg"
+ },
+ "araneae": {
+  "title": "File:Araneus diadematus qtl1.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Quartl",
+  "source": "https://commons.wikimedia.org/wiki/File:Araneus_diadematus_qtl1.jpg"
+ },
+ "opiliones": {
+  "title": "File:Opiliones harvestman.jpg",
+  "license": "CC BY-SA 2.5",
+  "artist": "Bruce Marlin",
+  "source": "https://commons.wikimedia.org/wiki/File:Opiliones_harvestman.jpg"
+ },
+ "acari": {
+  "title": "File:Ixodus ricinus 5x.jpg",
+  "license": "CC BY-SA 2.5",
+  "artist": "Richard Bartz",
+  "source": "https://commons.wikimedia.org/wiki/File:Ixodus_ricinus_5x.jpg"
+ },
+ "cephalocarida": {
+  "title": "File:Hutchinsoniella macracantha (YPM IZ 003617.CR) 002.jpeg",
+  "license": "CC0",
+  "artist": "Daniel J. Drew",
+  "source": "https://commons.wikimedia.org/wiki/File:Hutchinsoniella_macracantha_(YPM_IZ_003617.CR)_002.jpeg"
+ },
+ "triops": {
+  "title": "File:Triops cancriformis spain green 05.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Dat doris",
+  "source": "https://commons.wikimedia.org/wiki/File:Triops_cancriformis_spain_green_05.jpg"
+ }
+}
