@@ -226,7 +226,7 @@ export function buildLimulus() {
     ventralClose: { pos: [-0.4, 6.6, 2.4], target: [-0.4, 0.7, 0] },
     gills: { pos: [1.4, 5.4, 3.0], target: [0.9, 0.7, 0] },
     lateral: { pos: [0.4, 1.2, 8.8], target: [0.5, 0.35, 0] },
-    cut: { pos: [0.5, 2.0, 6.4], target: [0.3, 0.35, 0] },
+    cut: { pos: [0.1, 1.25, 4.3], target: [0.0, 0.32, 0] },
   };
 
   const model = {

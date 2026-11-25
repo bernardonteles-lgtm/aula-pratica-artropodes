@@ -258,7 +258,7 @@ export function buildCrayfish() {
     dorsal: { pos: [-0.3, 10.5, 2.0], target: [-0.3, 0.4, 0] },
     head: { pos: [-4.8, 2.0, 3.6], target: [-2.2, 0.75, 0] },
     ventral: { pos: [-0.3, -4.2, 3.4], target: [-0.3, 0.45, 0] },
-    cut: { pos: [-0.1, 1.7, 8.4], target: [-0.1, 0.75, 0] },
+    cut: { pos: [-0.75, 1.25, 6.6], target: [-0.75, 0.75, 0] },
     xsec: { pos: [-4.2, 1.6, 1.8], target: [-0.75, 0.75, 0] },
     tray: { pos: [0.3, 2.05, 10.8], target: [0.3, 2.05, 0] },
   };

@@ -277,7 +277,7 @@ export function buildGrasshopper() {
     mouth: { pos: [-5.6, 0.9, 2.8], target: [-2.45, 0.35, 0.05] },
     leg: { pos: [0.2, 1.0, 5.2], target: [0.1, 0.6, 0.3] },
     top: { pos: [0.4, 11.5, 2.4], target: [0.3, 0.8, 0] },
-    cut: { pos: [0.1, 1.6, 7.4], target: [0.1, 0.9, 0] },
+    cut: { pos: [0.05, 1.15, 5.5], target: [0.05, 0.88, 0] },
     nymph: { pos: [-2.6, 2.2, 5.2], target: [0.2, 0.6, 0] },
   };
   return {

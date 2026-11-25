@@ -2,6 +2,8 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { PAL, hex } from './palette.js';
+const PALC = Object.fromEntries(Object.entries(PAL).map(([k, v]) => [k, new THREE.Color(v)]));
 
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
@@ -88,7 +90,9 @@ export class Stage3D {
     this.camera.aspect = w / h;
     // em ecrãs estreitos afastar a câmara um pouco
     const asp = w / h;
-    this.fitScale = asp < 1.3 ? Math.min(2.6, 1.45 / asp) : 1;
+    // em palcos estreitos as colunas de legendas ocupam mais espaço: afastar a câmara
+    const narrow = w < 1000 && w >= 640 ? Math.pow(1000 / w, 1.15) : 1;
+    this.fitScale = Math.max(asp < 1.3 ? Math.min(2.6, 1.45 / asp) : 1, narrow);
     this.camera.updateProjectionMatrix();
     this.svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
     this.W = w; this.H = h;
@@ -117,6 +121,7 @@ export class Stage3D {
         o.material.clipShadows = true;
         if (u.cut === 'ext' && o.material.side === THREE.FrontSide && !u.noInside) o.material.side = THREE.DoubleSide;
         u.home = o.position.clone();
+        if (u.sys) u.origColor = o.material.color.clone();
         const mu = o.material.userData;
         if (!(mu.baseEmissive && mu.baseEmissive.isColor)) mu.baseEmissive = o.material.emissive.clone();
         if (mu.baseOpacity == null) mu.baseOpacity = o.material.opacity;
@@ -201,6 +206,8 @@ export class Stage3D {
     const el = document.createElement('div');
     el.className = 'lbl' + (fresh ? ' fresh' : '');
     el.innerHTML = `<span class="t">${a.name}</span>`;
+    const sys = (a.set || '').split(' ').find((w) => PAL[w] && this.model.systems && this.model.systems[w]);
+    if (sys) { el.style.borderLeftColor = hex(PAL[sys]); el.dataset.sys = sys; }
     el.dataset.id = id;
     if (a.desc) el.title = '';
     el.addEventListener('mouseenter', () => this.hover(id, true));
@@ -216,6 +223,7 @@ export class Stage3D {
     dot.setAttribute('r', 3.2);
     this.svg.appendChild(line);
     this.svg.appendChild(dot);
+    if (sys) { dot.style.fill = hex(PAL[sys]); line.style.stroke = hex(PAL[sys]); }
     this.labels.set(id, { el, line, dot, a, h: 0, n: this.labels.size + 1 });
     this.updateTest();
   }
@@ -281,8 +289,9 @@ export class Stage3D {
     this.sagPlane.constant = 6 * (1 - cur.cut) + 0.0001;
     this.transPlane.constant = cur.tcut == null ? 1000 : -cur.tcut;
 
+    cur.tint = (cur.tint || 0) + ((st.tint ? 1 : 0) - (cur.tint || 0)) * k;
     // materiais
-    const focus = st.focus;
+    const focus = this.tempFocus || st.focus;
     const t = performance.now() / 1000;
     for (const o of m.meshes) {
       const u = o.userData;
@@ -292,6 +301,7 @@ export class Stage3D {
       if (focus && u.sys && !focus.includes(u.sys)) op *= 0.1;
       if (focus && u.grp === 'ext' && u.sys == null) op *= 1;
       const mt = o.material;
+      if (u.origColor && PALC[u.sys]) mt.color.copy(u.origColor).lerp(PALC[u.sys], cur.tint * 0.8);
       mt.opacity = op;
       mt.transparent = op < 0.995 || mt.userData.baseTransparent;
       mt.depthWrite = op > 0.6 && !mt.map;

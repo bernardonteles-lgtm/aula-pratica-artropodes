@@ -2,6 +2,7 @@
 import { ART } from './art.js';
 import { rectTree, slantTree, embed, arrow } from './diagrams.js';
 import { FOTOS } from './fotos.js';
+import { PAL, hex } from './palette.js';
 
 let rr = 0;
 const card = (k, title, sub, text, s, extra = '') => `<div class="card ${extra}" data-s="${s}" style="--r:${[-1.2, 0.8, -0.4, 1.1, -0.9, 0.5][rr++ % 6]}deg">${ART[k]().replace(/<text[^>]*>.*?<\/text>/g, '')}<h3>${title}<small>${sub}</small></h3><p>${text}</p></div>`;
@@ -662,6 +663,16 @@ const photoCycle = (stages, _cx, _cy, _R, _rx, note) => {
     <div class="ar a${j}" data-s="${stages[(j + 1) % stages.length][3] || stages.length}">${arrows[j]}</div>`).join('')}
     ${mid ? `<div class="mid" data-s="${noteStep}">${mid}</div>` : ''}</div>`;
 };
+
+// ---------------- anatomia interna: todos os sistemas num só diapositivo ----------------
+const SYSN = { dig: 'Digestivo', circ: 'Circulatório', nerv: 'Nervoso', resp: 'Respiratório', exc: 'Excretor', rep: 'Reprodutor', gland: 'Glândulas', musc: 'Músculos' };
+const sysNote = (intro, items) => `${intro} <span class="hint2">Passe o rato sobre um sistema para o destacar.</span><ul class="sys">${Object.entries(items).map(([k, t]) => `<li data-sys="${k}"><span class="sw" style="background:${hex(PAL[k])}"></span><b style="color:${hex(PAL[k])}">${SYSN[k]}</b>: ${t}</li>`).join('')}</ul>`;
+const interna = (base, intro, items, extra = {}) => ({
+  ...base,
+  sub: base.sub.replace(/corte sagital/i, 'corte sagital · todos os sistemas'),
+  steps: [{ cut: 1, show: { legR: 0, int: 1 }, view: 'cut', tint: true, labels: ['@int'], n: sysNote(intro, items), ...extra }],
+});
+
 const P = {
   titulo: {
     sec: 'Introdução', title: 'Filo <em>Arthropoda</em>', sub: 'Aula prática',
@@ -751,14 +762,56 @@ const P = {
   },
 };
 
+const INT = {
+  limulus: interna(byTitle('Límulo — anatomia interna'), 'Corte pela linha média: cada <b>sistema</b> tem a sua cor.', {
+    dig: 'esófago que sobe para a frente até à moela; intestino até ao ânus; glândula digestiva enorme no prossoma.',
+    circ: 'aberto; coração dorsal com 8 pares de óstios. Hemolinfa azul (hemocianina).',
+    nerv: 'anel à volta do esófago e cordão ventral.',
+    exc: 'glândulas coxais.',
+    resp: 'brânquias foliáceas por baixo do opistossoma.',
+  }),
+  aranha: interna(byTitle('Aranha — anatomia interna'), 'Corte pela linha média: cada <b>sistema</b> tem a sua cor.', {
+    dig: 'digestão fora do corpo; estômago sugador, cecos e glândula digestiva.',
+    circ: 'aberto; coração tubular dorsal no opistossoma.',
+    resp: 'pulmões foliáceos (e, em muitas aranhas, traqueias).',
+    nerv: 'muito concentrado no prossoma.',
+    exc: 'túbulos de Malpighi e glândulas coxais.',
+    rep: 'ovário e espermatecas.',
+    gland: 'seda e veneno.',
+  }),
+  lagostim: interna(byTitle('Lagostim — anatomia interna'), 'Corte pela linha média: cada <b>sistema</b> tem a sua cor.', {
+    dig: 'estômago com moinho gástrico, hepatopâncreas e intestino até ao télson.',
+    circ: 'aberto; coração no seio pericárdico, com 3 pares de óstios.',
+    resp: 'brânquias nas câmaras branquiais, sob a carapaça.',
+    nerv: 'cérebro, gânglio subesofágico e cordão ventral ganglionar.',
+    exc: 'glândulas antenais ("verdes").',
+    rep: 'testículo e canal deferente (macho).',
+    musc: 'flexores do abdómen.',
+  }),
+  gafanhoto: interna(byTitle('Gafanhoto — anatomia interna'), 'Corte pela linha média: cada <b>sistema</b> tem a sua cor.', {
+    dig: 'papo, moela, cecos gástricos, intestino médio e posterior.',
+    exc: 'túbulos de Malpighi + reto (poupa água).',
+    circ: 'aberto; vaso dorsal. A hemolinfa não transporta oxigénio.',
+    resp: 'traqueias a partir dos espiráculos e sacos aéreos.',
+    nerv: 'cérebro, gânglio subesofágico e cordão ventral.',
+    rep: 'ovários, oviduto e espermateca (fêmea).',
+    gland: 'glândulas salivares.',
+  }),
+};
+const dInt = byTitle('Daphnia — por dentro e reprodução');
+INT.daphnia = { ...dInt, steps: [
+  { tint: true, labels: ['intest', 'cecos', 'coracao', 'cerebro', 'gmax', 'ovario'], n: sysNote('Pela carapaça transparente vemos todos os sistemas, cada um com a sua cor:', { dig: 'intestino e cecos.', circ: 'coração a bater.', nerv: 'gânglio cerebral junto ao olho.', exc: 'glândula maxilar.', rep: 'ovários.' }) },
+  ...dInt.steps.slice(1),
+] };
+
 export const SLIDES = [
   P.titulo, P.subfilos,
-  P.chelicerata, byTitle('Límulo — morfologia externa'), byTitle('Límulo — face ventral e apêndices'), byTitle('Límulo — anatomia interna'),
-  byTitle('Aranha — morfologia externa'), byTitle('Aranha — apêndices'), byTitle('Aranha — anatomia interna'),
-  P.crustacea, byTitle('Lagostim — morfologia externa'), byTitle('Lagostim — os 19 pares de apêndices'), byTitle('Lagostim — anatomia interna'), byTitle('Lagostim — corte transversal'), P.cicloCamarao,
-  byTitle('Daphnia — morfologia externa'), byTitle('Daphnia — por dentro e reprodução'),
+  P.chelicerata, byTitle('Límulo — morfologia externa'), byTitle('Límulo — face ventral e apêndices'), INT.limulus,
+  byTitle('Aranha — morfologia externa'), byTitle('Aranha — apêndices'), INT.aranha,
+  P.crustacea, byTitle('Lagostim — morfologia externa'), byTitle('Lagostim — os 19 pares de apêndices'), INT.lagostim, byTitle('Lagostim — corte transversal'), P.cicloCamarao,
+  byTitle('Daphnia — morfologia externa'), INT.daphnia,
   P.miriapodes,
-  P.insecta, byTitle('Gafanhoto — morfologia externa'), byTitle('Gafanhoto — peças bucais'), byTitle('Gafanhoto — patas e asas'), byTitle('Gafanhoto — anatomia interna'),
+  P.insecta, byTitle('Gafanhoto — morfologia externa'), byTitle('Gafanhoto — peças bucais'), byTitle('Gafanhoto — patas e asas'), INT.gafanhoto,
   byTitle('Metamorfose hemimetábola'), P.cicloMonarca,
   P.bancada, P.creditos,
 ];

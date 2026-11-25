@@ -273,3 +273,17 @@ ul.tr{font-size:14.5px;line-height:1.4}
   .cboard.six .ccol{grid-column:auto}
   .orgs.g4{grid-template-columns:1fr 1fr!important}
 }
+
+/* legenda de todos os sistemas */
+.legend.all{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(236,238,228,.15);border-radius:8px;padding:8px 10px;font-size:13.5px}
+.legend.all .lgh{grid-column:1/-1;font-size:11.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.legend.all span{cursor:pointer;border-radius:4px;padding:1px 4px}
+.legend.all span:hover,.legend.all span.pin{background:rgba(242,213,126,.18)}
+.legend i{width:13px;height:13px;border-radius:3px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:baseline}
+.note ul.sys{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px}
+.note ul.sys li{font-size:13.5px;line-height:1.35}
+
+.note ul.sys li{cursor:pointer;border-radius:4px;padding:1px 4px;margin-left:-4px}
+.note ul.sys li:hover,.note ul.sys li.pin{background:rgba(242,213,126,.16)}
+.hint2{display:block;font-size:12px;color:var(--dim);margin-top:2px}

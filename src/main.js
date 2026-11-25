@@ -1,4 +1,5 @@
 import { Stage3D } from './engine.js';
+import { PAL, hex } from './palette.js';
 import { SLIDES } from './slides.js';
 import { buildLimulus } from './models/limulus.js';
 import { buildSpider } from './models/spider.js';
@@ -16,7 +17,7 @@ stage.register('daphnia', buildDaphnia);
 stage.register('gafanhoto', buildGrasshopper);
 stage.register('cuticula', buildCuticle);
 
-let si = 0, step = 0, lastSlide = -1;
+let si = 0, step = 0, lastSlide = -1, pinned = null;
 
 function resolve(slide, k) {
   const m = stage.getModel(slide.model);
@@ -28,6 +29,7 @@ function resolve(slide, k) {
     if ('cut' in s) st.cut = s.cut;
     if ('tcut' in s) st.tcut = s.tcut;
     if ('focus' in s) st.focus = s.focus;
+    if ('tint' in s) st.tint = s.tint;
     if (s.clear) st.labels.clear();
     (s.labels || []).forEach((l) => st.labels.add(l));
     (s.unlabel || []).forEach((l) => st.labels.delete(l));
@@ -68,9 +70,21 @@ function renderPanel(slide, k, fresh) {
   if (slide.model) {
     const m = stage.getModel(slide.model);
     const st = resolve(slide, k);
-    if (st.focus && m.systems) {
-      for (const s of st.focus) if (m.systems[s]) lg.innerHTML += `<span><i style="background:#${m.systems[s][1].toString(16).padStart(6, '0')}"></i>${m.systems[s][0]}</span>`;
-    }
+    if (st.tint && m.systems) {
+      lg.classList.remove('all');
+      notes.querySelectorAll('li[data-sys]').forEach((el) => {
+        el.addEventListener('mouseenter', () => { if (!pinned) stage.tempFocus = [el.dataset.sys]; });
+        el.addEventListener('mouseleave', () => { if (!pinned) stage.tempFocus = null; });
+        el.addEventListener('click', () => {
+          pinned = pinned === el.dataset.sys ? null : el.dataset.sys;
+          stage.tempFocus = pinned ? [pinned] : null;
+          notes.querySelectorAll('li[data-sys]').forEach((e2) => e2.classList.toggle('pin', e2.dataset.sys === pinned));
+        });
+      });
+    } else if (st.focus && m.systems) {
+      lg.classList.remove('all');
+      for (const s of st.focus) if (m.systems[s]) lg.innerHTML += `<span><i style="background:${hex(PAL[s] || m.systems[s][1])}"></i>${m.systems[s][0]}</span>`;
+    } else lg.classList.remove('all');
   }
   $('#info').style.display = 'none';
 }
@@ -154,6 +168,8 @@ stage.onLabels = () => renderLegendNums();
 
 function show(newSi, newStep) {
   hideTip();
+  stage.tempFocus = null;
+  pinned = null;
   si = Math.max(0, Math.min(SLIDES.length - 1, newSi));
   const slide = SLIDES[si];
   step = Math.max(0, Math.min(slide.steps.length - 1, newStep));
@@ -165,7 +181,9 @@ function show(newSi, newStep) {
     $('#labels').style.visibility = 'visible';
     $('.hint').style.display = '';
     stage.active = true;
-    stage.apply(slide.model, resolve(slide, step), fresh && false);
+    const rs = resolve(slide, step);
+    $('.hint').style.display = rs.tint ? 'none' : '';
+    stage.apply(slide.model, rs, fresh && false);
   } else {
     stage.active = false;
     $('#gl').style.visibility = 'hidden';

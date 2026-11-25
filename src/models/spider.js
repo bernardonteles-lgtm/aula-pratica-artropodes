@@ -206,7 +206,7 @@ export function buildSpider() {
     front: { pos: [-5.2, 1.6, 1.6], target: [-1.3, 0.55, 0] },
     ventral: { pos: [0.6, -4.4, 4.4], target: [0.2, 0.4, 0.1] },
     leg: { pos: [-1.0, 1.5, 5.4], target: [-1.25, 0.55, 1.25] },
-    cut: { pos: [0.1, 1.05, 5.3], target: [0.05, 0.62, 0] },
+    cut: { pos: [0.1, 0.95, 4.7], target: [0.05, 0.62, 0] },
   };
   return {
     root, anchors, views,
