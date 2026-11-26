@@ -1,0 +1,19 @@
+name: Imagens da apresentação
+on:
+  push:
+    branches: [deck-imagens]
+    paths: ['deckimg/buscar.py']
+permissions:
+  contents: write
+jobs:
+  img:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 deckimg/buscar.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add deckimg
+          git commit -m "Imagens do Wikimedia Commons" || exit 0
+          git push
